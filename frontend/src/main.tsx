@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import App from "./App";
+import AllProviders from "./contexts/AllProviders";
 import "@/styles/index.css";
 import "@/styles/global.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <AllProviders>
       <Routes>
         <Route path="/" element={<App />}></Route>
       </Routes>
-    </BrowserRouter>
+    </AllProviders>
   </React.StrictMode>
 );

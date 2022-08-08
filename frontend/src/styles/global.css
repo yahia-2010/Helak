@@ -3,3 +3,7 @@
 body {
   font-family: "Cairo", sans-serif;
 }
+
+.center {
+  @apply items-center justify-center;
+}

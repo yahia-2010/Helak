@@ -8,6 +8,10 @@ module.exports = {
       screens: {
         xs: "400px",
       },
+      colors: {
+        "dark-primary": "#2b2a33",
+        "dark-secondary": "#42414d",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

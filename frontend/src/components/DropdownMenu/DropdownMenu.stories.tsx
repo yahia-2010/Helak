@@ -6,12 +6,19 @@ import AllProviders from "@/contexts/AllProviders";
 export default {
   title: "DropdownMenu",
   component: DropdownMenu,
+  decorators: [
+    (Story) => (
+      <div dir="rtl">
+        <AllProviders>
+          <Story />
+        </AllProviders>
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof DropdownMenu>;
 
 const Template: ComponentStory<typeof DropdownMenu> = (args) => (
-  <AllProviders>
-    <DropdownMenu {...args} />
-  </AllProviders>
+  <DropdownMenu {...args} />
 );
 
 export const Default = Template.bind({});
