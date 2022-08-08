@@ -18,6 +18,7 @@ const Navbar: React.FC = () => {
           <MenuIcon className="h-6" />
         </button>
         <div
+          data-testid="nav-menu"
           className={`flex w-full xs:w-auto transition gap-x-4 absolute left-0 bottom-0 z-10 flex-col top-12 shadow-md py-4 px-5 gap-y-4 bg-white sm:static sm:h-auto sm:bg-none sm:shadow-none sm:flex-row sm:p-0 ${
             isMenuVisible ? "translate-x-0" : "-translate-x-full"
           } sm:translate-x-0`}
