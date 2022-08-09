@@ -27,7 +27,12 @@ const Navbar: React.FC = () => {
           } sm:translate-x-0`}
         >
           {navbarLinks.map((link, index) => (
-            <A className="text-[.8rem]" key={index} href={link.url} navLink={true}>
+            <A
+              key={index}
+              href={link.url}
+              navLink={true}
+              className="text-[.8rem]"
+            >
               {link.text}
             </A>
           ))}
