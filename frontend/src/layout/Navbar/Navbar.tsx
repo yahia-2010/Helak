@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
-    <nav className="w-full bg-white dark:bg-dark-primary py-3 shadow-md flex justify-between px-4 items-center min-w-[300px] dark:text-white">
+    <nav className="w-full bg-white dark:bg-dark-primary py-3 shadow-md flex justify-between px-4 items-center min-w-[300px]">
       <Link to="/" className="text-lg">
         حِلَق
       </Link>
@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
           } sm:translate-x-0`}
         >
           {navbarLinks.map((link, index) => (
-            <A key={index} href={link.url} navLink={true}>
+            <A className="text-[.8rem]" key={index} href={link.url} navLink={true}>
               {link.text}
             </A>
           ))}

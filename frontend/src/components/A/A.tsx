@@ -5,24 +5,32 @@ export interface AnchorProps {
   children: React.ReactNode;
   href: string;
   navLink?: boolean;
+  [rest: string]: any;
 }
 
-const A: React.FC<AnchorProps> = ({ children, href, navLink = false }) => {
+const A: React.FC<AnchorProps> = (props) => {
+  const { children, href, navLink } = props;
   if (navLink)
     return (
       <NavLink
+        {...props}
         to={href}
         className={({ isActive }) =>
-          `text-[.8rem] hover:underline capitalize ${
-            isActive ? "font-semibold" : ""
-          }`
+          `hover:underline capitalize ${isActive ? "font-semibold" : ""}`
         }
       >
         {children}
       </NavLink>
     );
   return (
-    <Link to={href} className="text-[.8rem] hover:underline capitalize">
+    <Link
+      {...props}
+      to={href}
+      className={`hover:underline capitalize ${
+        // eslint-disable-next-line react/prop-types
+        (props as any)["className"]
+      }`}
+    >
       {children}
     </Link>
   );

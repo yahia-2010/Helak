@@ -9,7 +9,7 @@ const App: React.FC = () => {
   const { toggleTheme, theme } = useContext(ThemeContext);
 
   return (
-    <div className="">
+    <>
       <Navbar />
       <Outlet />
       <FloatingButton
@@ -22,7 +22,7 @@ const App: React.FC = () => {
         }
         action={() => toggleTheme()}
       />
-    </div>
+    </>
   );
 };
 

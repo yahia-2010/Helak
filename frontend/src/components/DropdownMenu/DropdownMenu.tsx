@@ -19,7 +19,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, button }) => {
 
   return (
     <Menu as="div" className="relative">
-      <Menu.Button className="flex items-center gap-x-1 text-[.8rem] bg-gray-100 dark:bg-dark-secondary rounded py-2 px-3 dark:text-white">
+      <Menu.Button className="flex items-center gap-x-1 text-[.8rem] bg-gray-100 dark:bg-dark-secondary rounded py-2 px-3">
         <span>{button}</span>
         <ChevronDownIcon className="h-5 flex center" />
       </Menu.Button>
@@ -32,7 +32,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, button }) => {
         leaveFrom="transform opacity-100 translate-0"
         leaveTo="transform opacity-0 -translate-y-1"
       >
-        <Menu.Items className="flex flex-col gap-y-1 absolute bg-white dark:bg-dark-primary dark:text-white shadow-md py-2 px-3 rounded top-[120%] right-0 xs:left-0 xs:right-auto">
+        <Menu.Items className="flex flex-col gap-y-1 absolute bg-white dark:bg-dark-primary shadow-md py-2 px-3 rounded top-[120%] right-0 xs:left-0 xs:right-auto">
           {items.map((item, index) => {
             return (
               <Menu.Item key={index}>
