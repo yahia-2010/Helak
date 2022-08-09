@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MenuIcon } from "@heroicons/react/solid";
 import DropdownMenu from "@/components/DropdownMenu";
+import A from "@/components/A";
 import { dropdownMenuItems, navbarLinks } from "@/data/navbar";
 
 const Navbar: React.FC = () => {
@@ -9,8 +10,8 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="w-full bg-white dark:bg-dark-primary py-3 shadow-md flex justify-between px-4 items-center min-w-[300px] dark:text-white">
-      <Link to="/" className="text-sm">
-        مجمع حلقات التحفيظ الإلكتروني
+      <Link to="/" className="text-lg">
+        حِلَق
       </Link>
       <div className="h-full flex items-center">
         <button
@@ -26,17 +27,9 @@ const Navbar: React.FC = () => {
           } sm:translate-x-0`}
         >
           {navbarLinks.map((link, index) => (
-            <NavLink
-              key={index}
-              to={link.url}
-              className={({ isActive }) =>
-                `text-[.8rem] hover:underline ${
-                  isActive ? "font-semibold" : ""
-                }`
-              }
-            >
+            <A key={index} href={link.url} navLink={true}>
               {link.text}
-            </NavLink>
+            </A>
           ))}
 
           <DropdownMenu button="حسابي" items={dropdownMenuItems} />
