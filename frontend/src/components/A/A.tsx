@@ -5,7 +5,7 @@ export interface AnchorProps {
   children: React.ReactNode;
   href: string;
   navLink?: boolean;
-  [rest: string]: any;
+  [x: string]: any;
 }
 
 const A: React.FC<AnchorProps> = (props) => {

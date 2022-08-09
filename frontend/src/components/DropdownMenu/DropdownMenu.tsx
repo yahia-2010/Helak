@@ -32,7 +32,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, button }) => {
         leaveFrom="transform opacity-100 translate-0"
         leaveTo="transform opacity-0 -translate-y-1"
       >
-        <Menu.Items className="flex flex-col gap-y-1 absolute bg-white dark:bg-dark-primary shadow-md py-2 px-3 rounded top-[120%] right-0 xs:left-0 xs:right-auto">
+        <Menu.Items className="flex flex-col gap-y-1 absolute bg-white dark:bg-dark-primary shadow-md py-2 px-3 rounded top-[130%] right-0 xs:left-0 xs:right-auto">
           {items.map((item, index) => {
             return (
               <Menu.Item key={index}>

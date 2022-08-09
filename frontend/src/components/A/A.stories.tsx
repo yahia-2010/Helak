@@ -25,6 +25,7 @@ export const AnchorLink = Template.bind({});
 AnchorLink.args = {
   href: "#",
   children: "link",
+  navLink: false,
 };
 
 export const NavLink = Template.bind({});

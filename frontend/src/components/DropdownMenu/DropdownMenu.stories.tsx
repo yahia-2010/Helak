@@ -39,7 +39,9 @@ Dark.args = {
 Dark.decorators = [
   (Story) => (
     <div className="dark">
-      <Story />
+      <div className="dark:text-white">
+        <Story />
+      </div>
     </div>
   ),
 ];

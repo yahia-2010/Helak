@@ -25,7 +25,9 @@ export const Dark = Template.bind({});
 Dark.decorators = [
   (Story) => (
     <div className="dark">
-      <Story />
+      <div className="dark:text-white">
+        <Story />
+      </div>
     </div>
   ),
 ];
