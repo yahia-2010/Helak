@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
@@ -16,9 +17,8 @@ const A: React.FC<AnchorProps> = (props) => {
         {...props}
         to={href}
         className={({ isActive }) =>
-          `capitalize hover:underline ${isActive ? "font-semibold" : ""} ${
-            // eslint-disable-next-line react/prop-types
-            (props as any).className
+          `${(props as any).className} flex capitalize hover:underline ${
+            isActive ? "font-semibold" : ""
           }`
         }
       >
@@ -29,10 +29,7 @@ const A: React.FC<AnchorProps> = (props) => {
     <Link
       {...props}
       to={href}
-      className={`capitalize hover:underline ${
-        // eslint-disable-next-line react/prop-types
-        (props as any).className
-      }`}
+      className={`${(props as any).className} flex capitalize hover:underline`}
     >
       {children}
     </Link>
