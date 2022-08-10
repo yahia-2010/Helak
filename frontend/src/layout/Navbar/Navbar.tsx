@@ -9,20 +9,20 @@ const Navbar: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
-    <nav className="w-full bg-white dark:bg-dark-primary py-3 shadow-md flex justify-between px-4 items-center min-w-[300px]">
+    <nav className="flex w-full min-w-[300px] items-center justify-between bg-white py-3 px-4 shadow-md dark:bg-dark-primary">
       <Link to="/" className="text-lg">
         حِلَق
       </Link>
-      <div className="h-full flex items-center">
+      <div className="flex h-full items-center">
         <button
           onClick={() => setIsMenuVisible(!isMenuVisible)}
-          className="bg-white dark:bg-dark-primary rounded transition hover:bg-gray-100 dark:hover:bg-dark-secondary block sm:hidden"
+          className="block rounded bg-white transition hover:bg-gray-100 dark:bg-dark-primary dark:hover:bg-dark-secondary sm:hidden"
         >
           <MenuIcon className="h-6" />
         </button>
         <div
           data-testid="nav-menu"
-          className={`flex w-full xs:w-auto transition gap-x-8 absolute left-0 bottom-0 z-10 flex-col top-12 shadow-md py-4 px-8 gap-y-7 items-start bg-white dark:bg-dark-primary sm:static sm:h-auto sm:bg-none sm:shadow-none sm:flex-row sm:p-0 sm:items-center ${
+          className={`absolute left-0 bottom-0 top-12 z-10 flex w-full flex-col items-start gap-x-8 gap-y-7 bg-white py-4 px-8 shadow-md transition dark:bg-dark-primary sm:static sm:h-auto sm:flex-row sm:items-center sm:bg-none sm:p-0 sm:shadow-none xs:w-auto ${
             isMenuVisible ? "translate-x-0" : "-translate-x-full"
           } sm:translate-x-0`}
         >

@@ -6,9 +6,9 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState("");
 
   return (
-    <section className="w-full h-full min-h-[calc(100vh-3.75rem)] flex center">
-      <div className="bg-white dark:bg-dark-primary shadow-md rounded p-4">
-        <h1 className="">تسجيل الدخول</h1>
+    <section className="center flex h-full min-h-[calc(100vh-3.75rem)] w-full">
+      <div className="h-fit w-64 rounded bg-white p-4 shadow-md dark:bg-dark-primary">
+        <h1 className="mb-12 mt-2 w-full text-center text-3xl">تسجيل الدخول</h1>
         <div className="">
           <form className="">
             <Input
@@ -23,6 +23,9 @@ const Login: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </form>
+          <button className="" type="submit">
+            تسجيل
+          </button>
         </div>
       </div>
     </section>

@@ -16,9 +16,9 @@ const A: React.FC<AnchorProps> = (props) => {
         {...props}
         to={href}
         className={({ isActive }) =>
-          `hover:underline capitalize ${isActive ? "font-semibold" : ""} ${
+          `capitalize hover:underline ${isActive ? "font-semibold" : ""} ${
             // eslint-disable-next-line react/prop-types
-            (props as any)["className"]
+            (props as any).className
           }`
         }
       >
@@ -29,9 +29,9 @@ const A: React.FC<AnchorProps> = (props) => {
     <Link
       {...props}
       to={href}
-      className={`hover:underline capitalize ${
+      className={`capitalize hover:underline ${
         // eslint-disable-next-line react/prop-types
-        (props as any)["className"]
+        (props as any).className
       }`}
     >
       {children}

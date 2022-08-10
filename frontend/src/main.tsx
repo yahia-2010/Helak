@@ -11,7 +11,7 @@ import "@/styles/global.css";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <AllProviders>
-      <div className="w-full h-full min-h-screen bg-white dark:bg-dark-secondary text-dark-primary dark:text-white">
+      <div className="h-full min-h-screen w-full bg-white text-dark-primary dark:bg-dark-secondary dark:text-white">
         <Routes>
           <Route path="/" element={<App />}></Route>
           <Route path="/login" element={<LoginPage />} />

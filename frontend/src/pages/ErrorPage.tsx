@@ -13,8 +13,8 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ status }) => {
 
   return (
     <>
-      <section className="w-full h-screen flex center">
-        <div className="w-full flex flex-col center">
+      <section className="center flex h-screen w-full">
+        <div className="center flex w-full flex-col">
           <h1 className="text-9xl">{status}</h1>
           <p className="">
             {status === 404

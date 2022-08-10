@@ -9,7 +9,7 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({ icon, action }) => {
   return (
     <button
       onClick={() => action()}
-      className="absolute right-12 bottom-12 rounded-full aspect-square flex center p-2.5 shadow-md bg-white dark:bg-dark-primary transition hover:shadow-lg active:shadow-md"
+      className="center absolute right-12 bottom-12 flex aspect-square rounded-full bg-white p-2.5 shadow-md transition hover:shadow-lg active:shadow-md dark:bg-dark-primary"
     >
       {icon}
     </button>

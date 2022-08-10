@@ -54,6 +54,12 @@ Error.args = {
   error: true,
 };
 
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: "disabled input",
+  disabled: true,
+};
+
 export const Dark = Template.bind({});
 Dark.args = {
   label: "dark input",
