@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
-    <nav className="flex w-full min-w-[300px] items-center justify-between bg-white py-3 px-4 shadow-md dark:bg-dark-primary">
+    <nav className="z-20 flex w-full min-w-[300px] items-center justify-between bg-white py-3 px-4 shadow-md dark:bg-dark-primary">
       <Link to="/" className="text-lg">
         حِلَق
       </Link>
@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
         </button>
         <div
           data-testid="nav-menu"
-          className={`absolute left-0 bottom-0 top-12 z-10 flex w-full flex-col items-start gap-x-8 gap-y-7 bg-white py-4 px-8 shadow-md transition dark:bg-dark-primary sm:static sm:h-auto sm:flex-row sm:items-center sm:bg-none sm:p-0 sm:shadow-none xs:w-auto ${
+          className={`absolute left-0 bottom-0 top-12 z-20 flex w-full flex-col items-start gap-x-8 gap-y-7 bg-white py-6 px-8 pl-12 shadow-md transition dark:bg-dark-primary sm:static sm:h-auto sm:flex-row sm:items-center sm:bg-none sm:p-0 sm:shadow-none xs:w-auto ${
             isMenuVisible ? "translate-x-0" : "-translate-x-full"
           } sm:translate-x-0`}
         >

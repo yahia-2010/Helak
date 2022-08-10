@@ -1,15 +1,14 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import FloatingButton from "./FloatingButton";
-import { CogIcon } from "@heroicons/react/solid";
+import Select from "./Select";
 import {
   StorybookDarkMock,
   StorybookDefaultDecorators,
 } from "@/utils/util-components/storybookMocks";
 
 export default {
-  title: "FloatingButton",
-  component: FloatingButton,
+  title: "Select",
+  component: Select,
   decorators: [
     (Story) => (
       <StorybookDefaultDecorators>
@@ -17,18 +16,33 @@ export default {
       </StorybookDefaultDecorators>
     ),
   ],
-} as ComponentMeta<typeof FloatingButton>;
+} as ComponentMeta<typeof Select>;
 
-const Template: ComponentStory<typeof FloatingButton> = (args) => (
-  <FloatingButton {...args} icon={<CogIcon className="h-5 w-5" />} />
+const selections = ["selection-1", "selection-2", "selection-3", "selection-4"];
+
+const Template: ComponentStory<typeof Select> = (args) => (
+  <Select
+    {...args}
+    handleSelect={() => {
+      /* ... */
+    }}
+    value={selections[0]}
+    selections={selections}
+  />
 );
 
 export const Default = Template.bind({});
+Default.args = {
+  label: "select",
+};
 
 export const Dark = Template.bind({});
+Dark.args = {
+  label: "dark select",
+};
 Dark.decorators = [
   (Story) => (
-    <StorybookDarkMock bgColor="secondary">
+    <StorybookDarkMock>
       <Story />
     </StorybookDarkMock>
   ),

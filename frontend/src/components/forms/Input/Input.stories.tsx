@@ -1,18 +1,19 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Input from "./Input";
-import AllProviders from "@/contexts/AllProviders";
+import {
+  StorybookDarkMock,
+  StorybookDefaultDecorators,
+} from "@/utils/util-components/storybookMocks";
 
 export default {
   title: "Input",
   component: Input,
   decorators: [
     (Story) => (
-      <div dir="rtl">
-        <AllProviders>
-          <Story />
-        </AllProviders>
-      </div>
+      <StorybookDefaultDecorators>
+        <Story />
+      </StorybookDefaultDecorators>
     ),
   ],
 } as ComponentMeta<typeof Input>;
@@ -66,8 +67,8 @@ Dark.args = {
 };
 Dark.decorators = [
   (Story) => (
-    <div className="dark">
+    <StorybookDarkMock>
       <Story />
-    </div>
+    </StorybookDarkMock>
   ),
 ];

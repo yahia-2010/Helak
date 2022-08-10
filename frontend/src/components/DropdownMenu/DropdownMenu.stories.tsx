@@ -1,18 +1,19 @@
 import React from "react";
 import DropdownMenu from "./DropdownMenu";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import AllProviders from "@/contexts/AllProviders";
+import {
+  StorybookDarkMock,
+  StorybookDefaultDecorators,
+} from "@/utils/util-components/storybookMocks";
 
 export default {
   title: "DropdownMenu",
   component: DropdownMenu,
   decorators: [
     (Story) => (
-      <div dir="rtl">
-        <AllProviders>
-          <Story />
-        </AllProviders>
-      </div>
+      <StorybookDefaultDecorators>
+        <Story />
+      </StorybookDefaultDecorators>
     ),
   ],
 } as ComponentMeta<typeof DropdownMenu>;
@@ -38,10 +39,8 @@ Dark.args = {
 };
 Dark.decorators = [
   (Story) => (
-    <div className="dark">
-      <div className="dark:text-white">
-        <Story />
-      </div>
-    </div>
+    <StorybookDarkMock>
+      <Story />
+    </StorybookDarkMock>
   ),
 ];

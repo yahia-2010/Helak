@@ -1,18 +1,16 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import A from "./A";
-import AllProviders from "@/contexts/AllProviders";
+import { StorybookDefaultDecorators } from "@/utils/util-components/storybookMocks";
 
 export default {
   title: "A",
   component: A,
   decorators: [
     (Story) => (
-      <div dir="rtl">
-        <AllProviders>
-          <Story />
-        </AllProviders>
-      </div>
+      <StorybookDefaultDecorators>
+        <Story />
+      </StorybookDefaultDecorators>
     ),
   ],
 } as ComponentMeta<typeof A>;

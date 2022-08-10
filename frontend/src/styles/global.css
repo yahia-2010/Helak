@@ -7,3 +7,15 @@ body {
 .center {
   @apply items-center justify-center;
 }
+
+.thin-scroll {
+  scrollbar-width: thin;
+}
+
+.thin-scroll::-webkit-scrollbar {
+  @apply w-[3px];
+}
+
+.thin-scroll::-webkit-scrollbar-thumb {
+  @apply bg-gray-100;
+}

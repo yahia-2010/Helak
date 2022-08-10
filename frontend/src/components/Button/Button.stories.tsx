@@ -1,18 +1,19 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Button from "./Button";
-import AllProviders from "@/contexts/AllProviders";
+import {
+  StorybookDarkMock,
+  StorybookDefaultDecorators,
+} from "@/utils/util-components/storybookMocks";
 
 export default {
   title: "Button",
   component: Button,
   decorators: [
     (Story) => (
-      <div dir="rtl">
-        <AllProviders>
-          <Story />
-        </AllProviders>
-      </div>
+      <StorybookDefaultDecorators>
+        <Story />
+      </StorybookDefaultDecorators>
     ),
   ],
 } as ComponentMeta<typeof Button>;
@@ -33,9 +34,9 @@ DarkPrimary.args = {
 };
 DarkPrimary.decorators = [
   (Story) => (
-    <div className="dark">
+    <StorybookDarkMock>
       <Story />
-    </div>
+    </StorybookDarkMock>
   ),
 ];
 
@@ -52,9 +53,9 @@ DarkSecondary.args = {
 };
 DarkSecondary.decorators = [
   (Story) => (
-    <div className="dark">
+    <StorybookDarkMock>
       <Story />
-    </div>
+    </StorybookDarkMock>
   ),
 ];
 
@@ -71,9 +72,9 @@ DarkText.args = {
 };
 DarkText.decorators = [
   (Story) => (
-    <div className="dark">
+    <StorybookDarkMock>
       <Story />
-    </div>
+    </StorybookDarkMock>
   ),
 ];
 

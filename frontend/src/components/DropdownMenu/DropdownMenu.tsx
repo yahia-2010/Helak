@@ -21,7 +21,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, button }) => {
     <Menu as="div" className="relative">
       <Menu.Button className="flex items-center gap-x-1 rounded bg-gray-100 py-2 px-3 text-[.8rem] dark:bg-dark-secondary">
         <span>{button}</span>
-        <ChevronDownIcon className="center flex h-5" />
+        <ChevronDownIcon className="center flex h-5 w-5" />
       </Menu.Button>
       <Transition
         as={React.Fragment}
