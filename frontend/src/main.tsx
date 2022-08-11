@@ -6,19 +6,22 @@ import ErrorPage from "./pages/ErrorPage";
 import LoginPage from "./pages/Login";
 import SignUpPage from "./pages/SignUp";
 import AllProviders from "./contexts/AllProviders";
+import ThemeToggle from "./components/templates/ThemeToggle";
 import "@/styles/index.css";
 import "@/styles/global.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <AllProviders>
-      <div className="h-full min-h-screen w-full bg-white text-dark-primary dark:bg-dark-secondary dark:text-white">
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="*" element={<ErrorPage status={404} />} />
-        </Routes>
+      <div className="relative h-full min-h-screen w-full bg-gray-100 text-dark-primary dark:bg-dark-secondary dark:text-white">
+        <ThemeToggle>
+          <Routes>
+            <Route path="/" element={<App />}></Route>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="*" element={<ErrorPage status={404} />} />
+          </Routes>
+        </ThemeToggle>
       </div>
     </AllProviders>
   </React.StrictMode>

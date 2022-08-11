@@ -1,9 +1,7 @@
 import React from "react";
 
-const submitLogin: React.FormEventHandler<HTMLFormElement> = (
-  e: React.FormEvent<HTMLFormElement>
-) => {
-  /* ... */
+const submitLogin = (e: React.FormEvent<HTMLFormElement>, data: any) => {
+  e.preventDefault();
 };
 
 export default submitLogin;

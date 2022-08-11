@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 
@@ -8,11 +7,12 @@ export interface InputProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   value?: string;
   error?: boolean;
+  name?: string;
   [x: string]: any;
 }
 
 const Input: React.FC<InputProps> = (props) => {
-  const { label, type, onChange, value, error } = props;
+  const { label, type, onChange, value, error, name } = props;
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
@@ -24,6 +24,7 @@ const Input: React.FC<InputProps> = (props) => {
           type={
             type === "password" ? (passwordVisible ? "text" : "password") : type
           }
+          name={name}
           onChange={onChange}
           value={value}
           className={`${(props as any).className} w-full disabled:opacity-75 ${

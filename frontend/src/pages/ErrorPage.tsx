@@ -12,31 +12,19 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ status }) => {
   const { toggleTheme, theme } = useContext(ThemeContext);
 
   return (
-    <>
-      <section className="center flex h-screen w-full">
-        <div className="center flex w-full flex-col">
-          <h1 className="text-9xl">{status}</h1>
-          <p className="">
-            {status === 404
-              ? "يبدو أن الصفحة التي تبحث عنها غير متوفرة"
-              : "حدث خطأ ما"}
-          </p>
-          <A href="/" className="mt-6 text-[.875rem]">
-            العودة إلى الصفحة الرئيسة
-          </A>
-        </div>
-      </section>
-      <FloatingButton
-        icon={
-          theme === "light" ? (
-            <MoonIcon className="h-5 w-5" />
-          ) : (
-            <SunIcon className="h-5 w-5" />
-          )
-        }
-        action={() => toggleTheme()}
-      />
-    </>
+    <section className="center flex h-screen w-full">
+      <div className="center flex w-full flex-col">
+        <h1 className="text-9xl">{status}</h1>
+        <p className="">
+          {status === 404
+            ? "يبدو أن الصفحة التي تبحث عنها غير متوفرة"
+            : "حدث خطأ ما"}
+        </p>
+        <A href="/" className="mt-6 text-[.875rem]">
+          العودة إلى الصفحة الرئيسة
+        </A>
+      </div>
+    </section>
   );
 };
 
