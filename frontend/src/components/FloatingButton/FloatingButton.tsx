@@ -6,15 +6,16 @@ export interface FloatingButtonProps {
   [x: string]: any;
 }
 
-const FloatingButton: React.FC<FloatingButtonProps> = (props) => {
-  const { icon, action } = props;
+const FloatingButton: React.FC<FloatingButtonProps> = ({
+  icon,
+  action,
+  ...rest
+}) => {
   return (
     <button
-      {...props}
+      {...rest}
       onClick={() => action()}
-      className={`${
-        (props as any).className
-      } center fixed right-12 bottom-12 z-10 flex aspect-square rounded-full bg-white p-2.5 shadow-md transition hover:shadow-lg active:shadow-md dark:bg-dark-primary`}
+      className={`${rest.className} center fixed right-12 bottom-12 z-10 flex aspect-square rounded-full bg-white p-2.5 shadow-md transition hover:shadow-lg active:shadow-md dark:bg-dark-primary`}
     >
       {icon}
     </button>

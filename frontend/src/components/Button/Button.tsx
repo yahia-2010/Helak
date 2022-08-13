@@ -7,15 +7,18 @@ export interface ButtobProps {
   [x: string]: any;
 }
 
-const Button: React.FC<ButtobProps> = (props) => {
-  const { children, onClick, variant = "primary" } = props;
-
+const Button: React.FC<ButtobProps> = ({
+  children,
+  onClick,
+  variant = "primary",
+  ...rest
+}) => {
   return (
     <button
-      {...props}
+      {...rest}
       onClick={(e) => onClick && onClick(e)}
       className={`${
-        (props as any).className
+        rest.className
       } rounded px-4 py-2 capitalize transition duration-200 disabled:bg-gray-100 disabled:text-dark-primary disabled:opacity-75 disabled:shadow-none ${
         variant === "primary"
           ? "bg-color-primary text-white shadow-md hover:shadow-lg active:shadow-md"

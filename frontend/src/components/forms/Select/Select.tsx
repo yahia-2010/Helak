@@ -10,14 +10,17 @@ export interface SelectProps {
   [x: string]: any;
 }
 
-const Select: React.FC<SelectProps> = (props) => {
-  const { selections, handleSelect, value, label } = props;
+const Select: React.FC<SelectProps> = ({
+  selections,
+  handleSelect,
+  value,
+  label,
+  ...rest
+}) => {
   return (
     <div
-      className={`${
-        (props as any).className
-      } relative flex w-full flex-col gap-y-1`}
-      {...props}
+      className={`${rest.className} relative flex w-full flex-col gap-y-1`}
+      {...rest}
     >
       <label className="text-[.85rem]">{label}</label>
       <Listbox value={value} onChange={handleSelect}>

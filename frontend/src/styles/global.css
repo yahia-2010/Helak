@@ -34,3 +34,11 @@ input:not(.no-ring) {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+::selection {
+  @apply bg-color-primary text-white;
+}
+
+::-moz-selection {
+  @apply bg-color-primary text-white;
+}

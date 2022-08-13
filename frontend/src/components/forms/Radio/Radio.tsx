@@ -11,21 +11,24 @@ export interface RadioProps {
   [x: string]: any;
 }
 
-const Radio: React.FC<RadioProps> = (props) => {
-  const { label, options, values, value, handleSelect } = props;
-
+const Radio: React.FC<RadioProps> = ({
+  label,
+  options,
+  values,
+  value,
+  handleSelect,
+  ...rest
+}) => {
   if (values.length !== options.length) {
     return <p>values and options should have the same length</p>;
   }
 
   return (
     <RadioGroup
-      {...props}
+      {...rest}
       value={value}
       onChange={handleSelect}
-      className={`${
-        (props as any).className
-      } relative flex w-full flex-col gap-y-1`}
+      className={`${rest.className} relative flex w-full flex-col gap-y-1`}
     >
       {label && (
         <RadioGroup.Label className="text-[.85rem]">{label}</RadioGroup.Label>
@@ -35,17 +38,17 @@ const Radio: React.FC<RadioProps> = (props) => {
           <RadioGroup.Option
             key={index}
             value={values[index]}
-            as={React.Fragment}
+            className={({ checked }) =>
+              `flex cursor-pointer items-center justify-between rounded px-2 py-1 text-start ${
+                checked ? "bg-color-primary text-white" : ""
+              }`
+            }
           >
             {({ checked }) => (
-              <button
-                className={`flex items-center justify-between rounded px-2 py-1 text-start ${
-                  checked ? "bg-color-primary text-white" : ""
-                }`}
-              >
+              <>
                 <span>{option}</span>
                 {checked && <CheckIcon className="h-5 w-5" />}
-              </button>
+              </>
             )}
           </RadioGroup.Option>
         ))}

@@ -8,15 +8,14 @@ export interface AnchorProps {
   [x: string]: any;
 }
 
-const A: React.FC<AnchorProps> = (props) => {
-  const { children, href, navLink } = props;
+const A: React.FC<AnchorProps> = ({ children, href, navLink, ...rest }) => {
   if (navLink)
     return (
       <NavLink
-        {...props}
+        {...rest}
         to={href}
         className={({ isActive }) =>
-          `${(props as any).className} flex capitalize hover:underline ${
+          `${rest.className} flex capitalize hover:underline ${
             isActive ? "font-semibold" : ""
           }`
         }
@@ -26,9 +25,9 @@ const A: React.FC<AnchorProps> = (props) => {
     );
   return (
     <Link
-      {...props}
+      {...rest}
       to={href}
-      className={`${(props as any).className} flex capitalize hover:underline`}
+      className={`${rest.className} flex capitalize hover:underline`}
     >
       {children}
     </Link>
