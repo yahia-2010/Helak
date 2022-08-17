@@ -4,20 +4,22 @@ import React from "react";
 
 export interface RadioProps {
   label?: string;
-  options: string[];
-  values: string[];
+  options?: string[];
+  values?: string[];
   value: string;
-  handleSelect: (value: string) => void;
-  [x: string]: any;
+  handleSelect?: (value: string) => void;
+  error?: boolean;
+  className?: string;
 }
 
 const Radio: React.FC<RadioProps> = ({
   label,
-  options,
-  values,
+  options = [],
+  values = [],
   value,
   handleSelect,
-  ...rest
+  error = false,
+  className = "",
 }) => {
   if (values.length !== options.length) {
     return <p>values and options should have the same length</p>;
@@ -25,10 +27,9 @@ const Radio: React.FC<RadioProps> = ({
 
   return (
     <RadioGroup
-      {...rest}
       value={value}
-      onChange={handleSelect}
-      className={`${rest.className} relative flex w-full flex-col gap-y-1`}
+      onChange={(value: string) => handleSelect && handleSelect(value)}
+      className={`${className} relative flex w-full flex-col gap-y-1`}
     >
       {label && (
         <RadioGroup.Label className="text-[.85rem]">{label}</RadioGroup.Label>

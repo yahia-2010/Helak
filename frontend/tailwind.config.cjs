@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        xs: "400px",
+        xs: "425px",
       },
       colors: {
         "color-primary": "#F59E0B",

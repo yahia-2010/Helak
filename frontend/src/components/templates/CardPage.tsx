@@ -1,22 +1,17 @@
-import { ThemeContext } from "@/contexts/ThemeContext";
-import { MoonIcon, SunIcon } from "@heroicons/react/solid";
-import React, { useContext } from "react";
-import FloatingButton from "../FloatingButton";
+import React from "react";
 
-const CardPage: React.FC<{ children: React.ReactNode; [x: string]: any }> = (
-  props
-) => {
-  const { toggleTheme, theme } = useContext(ThemeContext);
-  const { children } = props;
-
+const CardPage: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className,
+}) => {
   return (
     <section className="center flex h-full min-h-screen w-full">
       <div
         className={`${
-          (props as any).className
-        } center flex h-full min-h-screen w-full rounded bg-white p-5 shadow-md dark:bg-dark-primary xs:h-fit xs:min-h-fit xs:w-fit`}
+          className || ""
+        } center m-0 flex h-full min-h-screen w-full rounded-none bg-white p-5 shadow-md dark:bg-dark-primary xs:my-14 xs:h-fit xs:min-h-fit xs:w-fit xs:rounded`}
       >
-        <div className="w-fit overflow-hidden">{children}</div>
+        {children}
       </div>
     </section>
   );

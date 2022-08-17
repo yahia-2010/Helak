@@ -42,3 +42,7 @@ input:not(.no-ring) {
 ::-moz-selection {
   @apply bg-color-primary text-white;
 }
+
+.center-title {
+  @apply mb-12 mt-6 w-full text-center text-3xl;
+}

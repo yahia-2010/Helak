@@ -1,7 +1,4 @@
-import React, { useContext } from "react";
-import FloatingButton from "@/components/FloatingButton";
-import { ThemeContext } from "@/contexts/ThemeContext";
-import { MoonIcon, SunIcon } from "@heroicons/react/solid";
+import React from "react";
 import A from "@/components/A";
 
 interface ErrorPageProps {
@@ -9,8 +6,6 @@ interface ErrorPageProps {
 }
 
 const ErrorPage: React.FC<ErrorPageProps> = ({ status }) => {
-  const { toggleTheme, theme } = useContext(ThemeContext);
-
   return (
     <section className="center flex h-screen w-full">
       <div className="center flex w-full flex-col">

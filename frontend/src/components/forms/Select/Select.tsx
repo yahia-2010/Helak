@@ -3,27 +3,29 @@ import { Listbox, Transition } from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/solid";
 
 export interface SelectProps {
-  selections: string[];
-  handleSelect: (value: string) => void;
+  selections?: string[];
+  handleSelect?: (value: string) => void;
   value: string;
   label: string;
-  [x: string]: any;
+  error?: boolean;
+  className?: string;
 }
 
 const Select: React.FC<SelectProps> = ({
-  selections,
+  selections = [],
   handleSelect,
   value,
   label,
-  ...rest
+  error = false,
+  className = "",
 }) => {
   return (
-    <div
-      className={`${rest.className} relative flex w-full flex-col gap-y-1`}
-      {...rest}
-    >
+    <div className={`${className} relative flex w-full flex-col gap-y-1`}>
       <label className="text-[.85rem]">{label}</label>
-      <Listbox value={value} onChange={handleSelect}>
+      <Listbox
+        value={value}
+        onChange={(value: string) => handleSelect && handleSelect(value)}
+      >
         <Listbox.Button className="relative w-full rounded bg-gray-100 px-2 py-[.4rem] text-start text-[.85rem] dark:bg-dark-secondary">
           <span className="border-0 capitalize">{value}</span>
           <span className="absolute left-[.35rem] top-1/2 -translate-y-1/2">

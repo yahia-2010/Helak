@@ -4,12 +4,14 @@ import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 export interface InputProps {
   label?: string;
   type?: React.HTMLInputTypeAttribute;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: (value: string) => void;
   value?: string;
   error?: boolean;
   name?: string;
   required?: boolean;
-  [x: string]: any;
+  placeholder?: string;
+  disabled?: boolean;
+  className?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -20,7 +22,9 @@ const Input: React.FC<InputProps> = ({
   error,
   name,
   required = false,
-  ...rest
+  placeholder,
+  disabled = false,
+  className = "",
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -34,22 +38,21 @@ const Input: React.FC<InputProps> = ({
       )}
       <div className="relative">
         <input
-          {...rest}
+          placeholder={placeholder}
+          disabled={disabled}
           type={
             type === "password" ? (passwordVisible ? "text" : "password") : type
           }
           name={name}
-          onChange={onChange}
+          onChange={(e) => onChange && onChange(e.target.value)}
           value={value}
-          className={`${rest.className} w-full disabled:opacity-75 ${
-            error && "bg-red-100 text-dark-primary dark:bg-red-100"
-          } rounded border-0 bg-gray-100 px-2 py-1 text-[.85rem] dark:bg-dark-secondary`}
+          className={`${className} w-full disabled:opacity-75 ${
+            error ? "border border-red-400" : "border-0"
+          } rounded bg-gray-100 px-2 py-1 text-[.85rem] dark:bg-dark-secondary`}
         />
         {type === "password" && (
           <button
-            className={`absolute left-2.5 top-1/2 -translate-y-1/2 ${
-              error && "text-dark-primary"
-            }`}
+            className={`absolute left-2.5 top-1/2 -translate-y-1/2`}
             onClick={() => setPasswordVisible(!passwordVisible)}
           >
             {!passwordVisible ? (

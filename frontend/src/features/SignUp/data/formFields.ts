@@ -1,6 +1,6 @@
 import selections from "./selections";
 
-export default [
+const formFields: FormFieldInterface[] = [
   {
     name: "fName",
     value: "",
@@ -37,11 +37,11 @@ export default [
     required: true,
     type: "radio",
     label: "الجنس",
-    selections: ["ذكر", "أنثى"],
+    options: ["ذكر", "أنثى"],
     values: ["male", "female"],
   },
   {
-    name: "languages",
+    name: "language",
     value: selections.langs[0],
     required: true,
     type: "select",
@@ -88,3 +88,5 @@ export default [
     label: "تأكيد كلمة المرور",
   },
 ];
+
+export default formFields;
