@@ -3,8 +3,9 @@ import ReactDOM from "react-dom/client";
 import { Routes, Route } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./pages/ErrorPage";
-import LoginPage from "./pages/Login";
-import SignUpPage from "./pages/SignUp";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import Home from "./pages/Home";
 import AllProviders from "./contexts/AllProviders";
 import ThemeToggle from "./components/templates/ThemeToggle";
 import "@/styles/index.css";
@@ -16,9 +17,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <div className="relative h-full min-h-screen w-full bg-gray-100 text-dark-primary dark:bg-dark-secondary dark:text-white">
         <ThemeToggle>
           <Routes>
-            <Route path="/" element={<App />}></Route>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/" element={<App />}>
+              <Route index element={<Home />}></Route>
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="*" element={<ErrorPage status={404} />} />
           </Routes>
         </ThemeToggle>
