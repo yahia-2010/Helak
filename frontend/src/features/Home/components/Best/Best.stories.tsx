@@ -1,12 +1,12 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Navbar from "./Navbar";
+import Best from "./Best";
 import { StorybookDefaultDecorators } from "@/utils/util-components/StorybookDefaultDecorators";
 import { StorybookDarkMock } from "@/mocks/storybookMocks";
 
 export default {
-  title: "Navbar",
-  component: Navbar,
+  title: "Best",
+  component: Best,
   decorators: [
     (Story) => (
       <StorybookDefaultDecorators>
@@ -14,16 +14,16 @@ export default {
       </StorybookDefaultDecorators>
     ),
   ],
-} as ComponentMeta<typeof Navbar>;
+} as ComponentMeta<typeof Best>;
 
-const Template: ComponentStory<typeof Navbar> = () => <Navbar />;
+const Template: ComponentStory<typeof Best> = () => <Best />;
 
 export const Default = Template.bind({});
 
 export const Dark = Template.bind({});
 Dark.decorators = [
   (Story) => (
-    <StorybookDarkMock bgColor="secondary">
+    <StorybookDarkMock>
       <Story />
     </StorybookDarkMock>
   ),

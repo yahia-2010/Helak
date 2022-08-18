@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import A from "./A";
-import { StorybookDefaultDecorators } from "@/utils/util-components/storybookMocks";
+import { StorybookDefaultDecorators } from "@/utils/util-components/StorybookDefaultDecorators";
 
 export default {
   title: "A",

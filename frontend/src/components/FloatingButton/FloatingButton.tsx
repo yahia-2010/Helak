@@ -15,7 +15,7 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({
     <button
       {...rest}
       onClick={() => action()}
-      className={`${rest.className} center fixed right-12 bottom-12 z-10 flex aspect-square rounded-full bg-white p-2.5 shadow-md transition hover:shadow-lg active:shadow-md dark:bg-dark-primary`}
+      className={`${rest.className} center shadow-hover fixed right-12 bottom-12 z-10 flex aspect-square rounded-full bg-white p-2.5 dark:bg-dark-primary`}
     >
       {icon}
     </button>

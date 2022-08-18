@@ -46,3 +46,7 @@ input:not(.no-ring) {
 .center-title {
   @apply mb-12 mt-6 w-full text-center text-3xl;
 }
+
+.shadow-hover {
+  @apply shadow-md transition-shadow hover:shadow-lg active:shadow-md disabled:shadow-none;
+}
