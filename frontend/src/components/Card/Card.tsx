@@ -24,29 +24,29 @@ const Card: React.FC<CardPropsInterface> = ({
   const children = (
     <>
       <img
-        className="aspect-square rounded-t-lg bg-gray-100"
+        className="aspect-square rounded-t-lg bg-gray-100 dark:text-dark-primary"
         src={image}
         alt={`${title}-image`}
       />
       <div className="flex flex-col gap-y-2 p-5">
         <h2 className="text-xl">{title}</h2>
         {description && <p className="">{description}</p>}
+        {actions && (
+          <div className="flex items-center gap-x-3 pt-2">
+            {actions.map((action, index) => {
+              return (
+                <Button
+                  key={index}
+                  variant={action.variant}
+                  onClick={action.action}
+                >
+                  {action.text}
+                </Button>
+              );
+            })}
+          </div>
+        )}
       </div>
-      {actions && (
-        <div className="">
-          {actions.map((action, index) => {
-            return (
-              <Button
-                key={index}
-                variant={action.variant}
-                onClick={action.action}
-              >
-                {action.text}
-              </Button>
-            );
-          })}
-        </div>
-      )}
     </>
   );
 

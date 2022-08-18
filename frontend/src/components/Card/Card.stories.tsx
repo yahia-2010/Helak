@@ -37,7 +37,11 @@ WithActions.args = {
   title: "card with actions",
   actions: [
     {
-      text: "action",
+      text: "action-1",
+    },
+    {
+      text: "action-2",
+      variant: "secondary",
     },
   ],
 };
