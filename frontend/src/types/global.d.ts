@@ -5,6 +5,7 @@ declare global {
   type ButtonVariant = "primary" | "secondary" | "text";
   type Gender = "male" | "female";
   type DataErrorsType = { name: string; error: string }[];
+  type Theme = "light" | "dark";
 
   // Interfaces
   interface FormFieldInterface {
@@ -20,6 +21,7 @@ declare global {
   }
 
   interface HalakaInterface {
+    id: number;
     name: string;
     description?: string;
     image?: string;

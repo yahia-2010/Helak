@@ -2,14 +2,15 @@
 import React, { createContext, useEffect, useState } from "react";
 import useLocalStorage from "@/hooks/useLocalStorage";
 
-export type Theme = "light" | "dark";
-
 export interface ThemeContextInterface {
   theme: Theme;
   toggleTheme: () => void;
 }
 
-const defaultTheme: Theme = "light";
+const defaultTheme: Theme =
+  window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 
 const defaultThemeContextValue: ThemeContextInterface = {
   theme: defaultTheme,
@@ -23,7 +24,7 @@ export const ThemeContext = createContext<ThemeContextInterface>(
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { get, set, remove } = useLocalStorage();
+  const { get, set } = useLocalStorage();
   const [theme, setTheme] = useState<Theme>(
     (get("theme") as Theme) || defaultTheme
   );

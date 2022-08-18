@@ -10,7 +10,7 @@ const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <>
       {children}
       <FloatingButton
-        className="hidden xs:flex"
+        className="hidden sm:flex"
         icon={
           theme === "light" ? (
             <MoonIcon className="h-5 w-5" />

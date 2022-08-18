@@ -4,10 +4,10 @@ import Navbar from "./layout/Navbar";
 
 const App: React.FC = () => {
   return (
-    <>
+    <div>
       <Navbar />
       <Outlet />
-    </>
+    </div>
   );
 };
 
