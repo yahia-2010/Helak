@@ -1,12 +1,13 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Select from "./Select";
+import Card from "./Card";
 import { StorybookDefaultDecorators } from "@/utils/util-components/StorybookDefaultDecorators";
 import { StorybookDarkMock } from "@/mocks/storybookMocks";
+import dummyText from "@/utils/util-data/dummyText";
 
 export default {
-  title: "Select",
-  component: Select,
+  title: "Card",
+  component: Card,
   decorators: [
     (Story) => (
       <StorybookDefaultDecorators>
@@ -14,29 +15,40 @@ export default {
       </StorybookDefaultDecorators>
     ),
   ],
-} as ComponentMeta<typeof Select>;
+} as ComponentMeta<typeof Card>;
 
-const selections = ["selection-1", "selection-2", "selection-3", "selection-4"];
-
-const Template: ComponentStory<typeof Select> = (args) => (
-  <Select
-    {...args}
-    handleSelect={() => {
-      /* ... */
-    }}
-    value={selections[0]}
-    selections={selections}
-  />
+const Template: ComponentStory<typeof Card> = (args) => (
+  <Card {...args} description={dummyText[10]} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  label: "select",
+  title: "default card",
+};
+
+export const Link = Template.bind({});
+Link.args = {
+  title: "link card",
+  url: "#",
+};
+
+export const WithActions = Template.bind({});
+WithActions.args = {
+  title: "card with actions",
+  actions: [
+    {
+      text: "action-1",
+    },
+    {
+      text: "action-2",
+      variant: "secondary",
+    },
+  ],
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  label: "dark select",
+  title: "dark card",
 };
 Dark.decorators = [
   (Story) => (

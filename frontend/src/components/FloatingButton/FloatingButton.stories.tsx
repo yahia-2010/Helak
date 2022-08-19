@@ -2,10 +2,8 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import FloatingButton from "./FloatingButton";
 import { CogIcon } from "@heroicons/react/solid";
-import {
-  StorybookDarkMock,
-  StorybookDefaultDecorators,
-} from "@/utils/util-components/storybookMocks";
+import { StorybookDefaultDecorators } from "@/utils/util-components/StorybookDefaultDecorators";
+import { StorybookDarkMock } from "@/mocks/storybookMocks";
 
 export default {
   title: "FloatingButton",

@@ -9,8 +9,8 @@ const Navbar: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
-    <nav className="z-20 flex w-full min-w-[300px] items-center justify-between bg-white py-3 px-4 shadow-md dark:bg-dark-primary">
-      <Link to="/" className="text-lg">
+    <nav className="absolute top-0 left-0 z-20 flex w-full min-w-[300px] items-center justify-between bg-white py-3 px-4 shadow-md dark:bg-dark-primary">
+      <Link to="/" className="mr-2 text-lg">
         حِلَق
       </Link>
       <div className="flex h-full items-center">

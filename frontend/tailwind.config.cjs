@@ -13,6 +13,10 @@ module.exports = {
         "dark-primary": "#2b2a33",
         "dark-secondary": "#42414d",
       },
+      boxShadow: {
+        md: "0 0 8px -1.5px rgba(0, 0, 0, 0.25)",
+        lg: "0 0 8px 1.5px rgba(0, 0, 0, 0.15)",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
