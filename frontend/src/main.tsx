@@ -1,13 +1,22 @@
+// Base
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Routes, Route } from "react-router-dom";
+
+// App
 import App from "./App";
+
+// Pages
 import ErrorPage from "./pages/ErrorPage";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
+import Helak from "./pages/Helak";
+// Other
 import AllProviders from "./contexts/AllProviders";
 import ThemeToggle from "./components/templates/ThemeToggle";
+
+// Styles
 import "@/styles/index.css";
 import "@/styles/global.css";
 
@@ -18,7 +27,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <ThemeToggle>
           <Routes>
             <Route path="/" element={<App />}>
-              <Route index element={<Home />}></Route>
+              <Route index element={<Home />} />
+              <Route path="helak" element={<Helak />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />

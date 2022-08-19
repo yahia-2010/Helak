@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
+import React, { useRef, useState } from "react";
+import { EyeIcon, EyeOffIcon, SearchIcon } from "@heroicons/react/solid";
 
 export interface InputProps {
   label?: string;
   type?: React.HTMLInputTypeAttribute;
   onChange?: (value: string) => void;
+  onSearch?: (value: string) => void;
   value?: string;
   error?: boolean;
   name?: string;
@@ -18,6 +19,7 @@ const Input: React.FC<InputProps> = ({
   label,
   type,
   onChange,
+  onSearch,
   value,
   error,
   name,
@@ -27,6 +29,7 @@ const Input: React.FC<InputProps> = ({
   className = "",
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const inputRef = useRef(null);
 
   return (
     <div className="flex flex-col gap-y-1">
@@ -36,8 +39,9 @@ const Input: React.FC<InputProps> = ({
           {required && <span className="mr-0.5 text-red-500">*</span>}
         </label>
       )}
-      <div className="relative">
+      <div className={`${className} relative rounded`}>
         <input
+          ref={inputRef}
           placeholder={placeholder}
           disabled={disabled}
           type={
@@ -52,14 +56,24 @@ const Input: React.FC<InputProps> = ({
         />
         {type === "password" && (
           <button
-            className={`absolute left-2.5 top-1/2 -translate-y-1/2`}
+            className="absolute left-2.5 top-1/2 -translate-y-1/2"
             onClick={() => setPasswordVisible(!passwordVisible)}
           >
             {!passwordVisible ? (
-              <EyeOffIcon className="h-4" />
+              <EyeOffIcon className="h-4 w-4" />
             ) : (
-              <EyeIcon className="h-4" />
+              <EyeIcon className="h-4 w-4" />
             )}
+          </button>
+        )}
+        {type === "search" && (
+          <button
+            className="absolute left-2.5 top-1/2 -translate-y-1/2"
+            onClick={() =>
+              onSearch && onSearch((inputRef.current as any)?.value)
+            }
+          >
+            <SearchIcon className="h-4 w-4" />
           </button>
         )}
       </div>

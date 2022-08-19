@@ -1,11 +1,11 @@
 import React from "react";
-import footerData from "../data/Footer";
+import { footerIcons } from "../data/footer";
 
 const Footer: React.FC = () => {
   return (
     <footer className="bottom-0 left-0 flex w-full flex-col items-center justify-between gap-y-4 bg-white p-8 shadow-md dark:bg-dark-primary sm:flex-row sm:gap-y-0">
       <div className="center flex h-full gap-x-8">
-        {footerData.icons.map((icon, index) => {
+        {footerIcons.map((icon, index) => {
           return (
             <a
               key={index}

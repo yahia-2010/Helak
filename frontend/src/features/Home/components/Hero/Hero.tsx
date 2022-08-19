@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 
 const Hero: React.FC = () => {
   return (
-    <section className="center flex h-screen w-full flex-col gap-y-12 py-12">
+    <section className="center flex h-screen w-full flex-col gap-y-12">
       <div className="center flex flex-col gap-y-9">
         <h1 className="text-8xl">حِلَق</h1>
         <p className="text-xl">مجمع حلقات التحفيظ الإلكتروني</p>

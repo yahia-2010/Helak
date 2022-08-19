@@ -1,7 +1,17 @@
 [
     {
+        "id": 1,
         "name": "حلقة 1",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi.",
-        "image": ""
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi."
+    },
+    {
+        "id": 2,
+        "name": "حلقة 2",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi."
+    },
+    {
+        "id": 3,
+        "name": "حلقة 3",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi."
     }
 ]

@@ -1,10 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Footer from "./Footer";
-import {
-  StorybookDarkMock,
-  StorybookDefaultDecorators,
-} from "@/utils/util-components/storybookMocks";
+import { StorybookDefaultDecorators } from "@/utils/util-components/StorybookDefaultDecorators";
+import { StorybookDarkMock } from "@/mocks/storybookMocks";
 
 export default {
   title: "Footer",

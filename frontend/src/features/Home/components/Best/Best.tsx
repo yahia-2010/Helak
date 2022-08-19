@@ -23,7 +23,8 @@ const Best: React.FC = () => {
               title={halaka.name}
               description={halaka.description}
               image={halaka.image}
-              url={`/halakat/halaka?id=${halaka.id}`}
+              url={`/helak/halaka?id=${halaka.id}`}
+              bgDark="dark:bg-dark-secondary"
             />
           );
         })}
