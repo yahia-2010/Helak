@@ -46,3 +46,11 @@ input:not(.no-ring) {
 .center-title {
   @apply mb-12 mt-6 w-full text-center text-3xl;
 }
+
+.opacity-hover {
+  @apply opacity-[.85] transition-opacity hover:opacity-100 active:opacity-[.85];
+}
+
+.opacity-hover-low {
+  @apply opacity-50 transition-opacity hover:opacity-90 active:opacity-50;
+}
