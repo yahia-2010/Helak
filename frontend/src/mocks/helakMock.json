@@ -2,16 +2,29 @@
     {
         "id": 1,
         "name": "حلقة 1",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi."
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi.",
+        "free": false,
+        "online": false
     },
     {
         "id": 2,
         "name": "حلقة 2",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi."
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi.",
+        "free": true,
+        "online": false
     },
     {
         "id": 3,
         "name": "حلقة 3",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi."
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi.",
+        "free": true,
+        "online": true
+    },
+    {
+        "id": 4,
+        "name": "حلقة 4",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi.",
+        "free": false,
+        "online": true
     }
 ]

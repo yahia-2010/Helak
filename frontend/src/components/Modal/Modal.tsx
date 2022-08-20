@@ -16,16 +16,14 @@ const Modal: React.FC<ModalPropsInterface> = ({
   title,
   description,
   children,
-  closeModal,
+  closeModal = () => {
+    /* ... */
+  },
   actions = [],
 }) => {
   return (
     <Transition appear show={isOpen} as={React.Fragment}>
-      <Dialog
-        as="div"
-        className="relative z-10"
-        onClose={() => closeModal && closeModal()}
-      >
+      <Dialog as="div" className="relative z-50" onClose={closeModal}>
         <Transition.Child
           as={React.Fragment}
           enter="ease-out duration-300"
@@ -43,42 +41,43 @@ const Modal: React.FC<ModalPropsInterface> = ({
             <Transition.Child
               as={React.Fragment}
               enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-95"
-              enterTo="opacity-100 scale-100"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
               leave="ease-in duration-200"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white p-5 text-start align-middle shadow-xl transition-all dark:bg-dark-secondary dark:text-white">
                 {title && (
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-2xl font-medium leading-6"
                   >
                     {title}
                   </Dialog.Title>
                 )}
-                {description && (
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">{description}</p>
-                  </div>
-                )}
+                {description && <p className="mt-2">{description}</p>}
 
-                <div className="">{children}</div>
+                <div>{children}</div>
 
-                {actions?.length > 0 && (
-                  <div className="mt-4">
-                    {actions?.map((action, index) => (
+                <div className="mt-8">
+                  {actions?.length > 0 ? (
+                    actions?.map((action, index) => (
                       <Button
                         key={index}
                         variant={action.variant}
-                        onClick={() => action?.action && action?.action()}
+                        onClick={() => {
+                          action?.action && action?.action();
+                          closeModal();
+                        }}
                       >
                         {action.text}
                       </Button>
-                    ))}
-                  </div>
-                )}
+                    ))
+                  ) : (
+                    <Button onClick={closeModal}>حسناً</Button>
+                  )}
+                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>

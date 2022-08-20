@@ -25,6 +25,8 @@ declare global {
     name: string;
     description?: string;
     image?: string;
+    free: boolean;
+    online: boolean;
   }
 
   interface Action {
