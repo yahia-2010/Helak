@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@/components/Card";
 import DropdownMenu from "@/components/DropdownMenu";
 import Input from "@/components/forms/Input";
@@ -19,11 +19,13 @@ const Helak: React.FC = () => {
   );
   const [filter, setFilter] = useState(filters[0]);
   const filterItems: any[] = filters
-    .map((filter) => filter.text)
-    .map((filter) => ({
+    .map((filter: any) => filter.text)
+    .map((filter: any) => ({
       text: filter,
       action: (text: string) =>
-        setFilter(filters.find((filter) => filter.text === text) || filters[0]),
+        setFilter(
+          filters.find((filter: any) => filter.text === text) || filters[0]
+        ),
     }));
 
   useEffect(() => setHelak(data), [data]);
