@@ -58,3 +58,15 @@ input:not(.no-ring) {
 .shadow-hover {
   @apply shadow-md transition-shadow hover:shadow-lg active:shadow-md disabled:shadow-none;
 }
+
+.icon-button {
+  @apply rounded bg-white transition hover:bg-gray-100 dark:bg-dark-primary dark:hover:bg-dark-secondary;
+}
+
+.v-divider {
+  @apply mx-2 h-[75%] border-r-[1px] border-black opacity-20 dark:border-white dark:opacity-30;
+}
+
+.h-divider {
+  @apply my-2 w-[75%] border-t-[1px] border-black opacity-20 dark:border-white dark:opacity-30;
+}

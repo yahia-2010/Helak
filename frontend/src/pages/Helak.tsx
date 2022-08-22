@@ -77,7 +77,7 @@ const Helak: React.FC = () => {
         <DropdownMenu
           items={filterItems}
           button={filter.text}
-          label="إظهار الحلقات"
+          label="إظهار الحِلَق"
           buttonClasses="bg-white dark:bg-dark-primary"
           menuItemClasses="pl-8"
         />

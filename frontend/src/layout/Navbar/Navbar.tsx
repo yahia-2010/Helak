@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { MenuIcon, XIcon } from "@heroicons/react/solid";
+import { MenuIcon, MoonIcon, SunIcon, XIcon } from "@heroicons/react/solid";
 import DropdownMenu from "@/components/DropdownMenu";
 import A from "@/components/A";
 import { dropdownMenuItems, navbarLinks } from "../data/navbar";
 import { Transition } from "@headlessui/react";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
+import { ThemeContext } from "@/contexts/ThemeContext";
 
 const Navbar: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const { width } = useWindowDimensions();
 
   return (
@@ -19,13 +21,13 @@ const Navbar: React.FC = () => {
       <div className="flex h-full items-center">
         <button
           onClick={() => setIsMenuVisible(true)}
-          className="block rounded bg-white transition hover:bg-gray-100 dark:bg-dark-primary dark:hover:bg-dark-secondary sm:hidden"
+          className="icon-button block sm:hidden"
         >
           <MenuIcon className="h-6 w-6" />
         </button>
         <div
           data-testid="nav-menu"
-          className={`absolute left-0 bottom-0 top-0 z-50 flex flex-col items-start gap-x-8 gap-y-7 bg-white py-6 px-8 pl-12 shadow-md transition dark:bg-dark-primary sm:static sm:h-auto sm:flex-row sm:items-center sm:bg-none sm:p-0 sm:shadow-none ${
+          className={`absolute left-0 bottom-0 top-0 z-50 flex flex-col items-start gap-x-8 gap-y-7 bg-white px-8 pb-6 pt-5 pl-12 shadow-md transition dark:bg-dark-primary sm:static sm:h-12 sm:flex-row sm:items-center sm:bg-none sm:p-0 sm:shadow-none ${
             isMenuVisible ? "translate-x-0" : "-translate-x-full"
           } ${
             width > 640 ? "w-auto" : width > 425 ? "w-72" : "w-full"
@@ -33,10 +35,26 @@ const Navbar: React.FC = () => {
         >
           <button
             onClick={() => setIsMenuVisible(false)}
-            className="absolute top-5 left-5 block rounded bg-white transition hover:bg-gray-100 dark:bg-dark-primary dark:hover:bg-dark-secondary sm:hidden"
+            className="icon-button absolute top-5 left-5 block sm:hidden"
           >
             <XIcon className="h-7 w-7" />
           </button>
+          <button
+            className="icon-button ml-0 -mb-3 p-2 sm:-ml-2 sm:mb-0"
+            onClick={toggleTheme}
+          >
+            {theme === "light" ? (
+              <MoonIcon className="h-5 w-5" />
+            ) : (
+              <SunIcon className="h-5 w-5" />
+            )}
+          </button>
+          <div
+            className={width > 640 ? "v-divider" : "h-divider"}
+            style={{
+              margin: `0 ${width > 640 ? "-0.25rem" : "0"}`,
+            }}
+          />
           {navbarLinks.map((link, index) => (
             <A
               key={index}
