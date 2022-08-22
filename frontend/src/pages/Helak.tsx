@@ -62,9 +62,9 @@ const Helak: React.FC = () => {
 
   return (
     <section className="center flex h-full min-h-screen w-full flex-col py-14">
+      <ErrorModal />
       <h1 className="mb-[3.75rem] mt-6 text-5xl">حِلَق التحفيظ</h1>
-      <div className="flex w-full items-center justify-between px-40">
-        <ErrorModal />
+      <div className="mb-4 flex w-full flex-col items-center gap-y-6 px-10 sm:px-12 md:px-40 xs:mb-0 xs:flex-row xs:items-start xs:justify-between">
         <Input
           type="search"
           onChange={setSearchValue}
@@ -75,7 +75,7 @@ const Helak: React.FC = () => {
         <DropdownMenu
           items={filterItems}
           button={filter.text}
-          label="إظهار الحلقات :"
+          label="إظهار الحلقات"
           buttonClasses="bg-white dark:bg-dark-primary"
           menuItemClasses="pl-8"
         />

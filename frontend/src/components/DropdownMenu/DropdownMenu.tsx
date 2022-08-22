@@ -30,10 +30,12 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
 
   return (
     <div className="flex flex-col gap-y-1">
-      {label && <label className="text-[.85rem]">{label}</label>}
+      {label && (
+        <label className="whitespace-nowrap text-[.85rem]">{label}</label>
+      )}
       <Menu as="div" className={`relative`}>
         <Menu.Button
-          className={`${buttonClasses} flex items-center gap-x-1 rounded bg-gray-100 p-3 text-[.8rem] dark:bg-dark-secondary`}
+          className={`${buttonClasses} flex items-center gap-x-1 whitespace-nowrap rounded bg-gray-100 p-3 text-[.8rem] dark:bg-dark-secondary`}
         >
           <span>{button}</span>
           <ChevronDownIcon className="center flex h-5 w-5" />

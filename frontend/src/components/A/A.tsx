@@ -15,7 +15,9 @@ const A: React.FC<AnchorProps> = ({ children, href, navLink, ...rest }) => {
         {...rest}
         to={href}
         className={({ isActive }) =>
-          `${rest.className} flex capitalize hover:underline ${
+          `${
+            rest.className
+          } flex whitespace-nowrap capitalize hover:underline ${
             isActive ? "font-semibold" : ""
           }`
         }
@@ -27,7 +29,7 @@ const A: React.FC<AnchorProps> = ({ children, href, navLink, ...rest }) => {
     <Link
       {...rest}
       to={href}
-      className={`${rest.className} flex capitalize hover:underline`}
+      className={`${rest.className} flex whitespace-nowrap capitalize hover:underline`}
     >
       {children}
     </Link>
