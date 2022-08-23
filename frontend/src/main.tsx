@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Helak from "./pages/Helak";
+import About from "./pages/About";
 
 // Other
 import AllProviders from "./contexts/AllProviders";
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="helak" element={<Helak />} />
+          <Route path="about" element={<About />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

@@ -1,13 +1,13 @@
 import React from "react";
-import Modal from "./Modal";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import Collapse from "./Collapse";
 import { StorybookDefaultDecorators } from "@/utils/util-components/StorybookDefaultDecorators";
 import { StorybookDarkMock } from "@/mocks/storybookMocks";
 import dummyText from "@/utils/util-data/dummyText";
 
 export default {
-  title: "Modal",
-  component: Modal,
+  title: "Collapse",
+  component: Collapse,
   decorators: [
     (Story) => (
       <StorybookDefaultDecorators>
@@ -15,22 +15,22 @@ export default {
       </StorybookDefaultDecorators>
     ),
   ],
-} as ComponentMeta<typeof Modal>;
+} as ComponentMeta<typeof Collapse>;
 
-const Template: ComponentStory<typeof Modal> = (args) => (
-  <Modal {...args} isOpen={true} />
+const Template: ComponentStory<typeof Collapse> = (args) => (
+  <Collapse {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "default modal",
-  description: dummyText[10],
+  title: "default collapse",
+  content: dummyText[10],
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  title: "dark modal",
-  description: dummyText[10],
+  title: "dark collapse",
+  content: dummyText[10],
 };
 Dark.decorators = [
   (Story) => (

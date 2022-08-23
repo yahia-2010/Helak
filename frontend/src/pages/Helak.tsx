@@ -40,6 +40,7 @@ const Helak: React.FC = () => {
   }, [searchValue]);
 
   useEffect(() => {
+    setHelak(data);
     setHelak((helak) => {
       switch (filter.value) {
         case "paid":

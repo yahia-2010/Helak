@@ -7,5 +7,5 @@ export const dropdownMenuItems = [
 export const navbarLinks = [
   { text: "الصفحة الرئيسة", url: "/" },
   { text: "حلقات التحفيظ", url: "/helak" },
-  { text: "من نحن", url: "/about" },
+  { text: "حول حِلَق", url: "/about" },
 ];
