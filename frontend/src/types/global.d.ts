@@ -2,10 +2,10 @@ export {};
 
 declare global {
   // Types
-  type ButtonVariant = "primary" | "secondary" | "text";
   type Gender = "male" | "female";
   type DataErrorsType = { name: string; error: string }[];
   type Theme = "light" | "dark";
+  type ButtonVariant = "primary" | "secondary" | "text";
 
   // Interfaces
   interface FormFieldInterface {

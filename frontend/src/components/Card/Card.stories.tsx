@@ -37,10 +37,10 @@ WithActions.args = {
   title: "card with actions",
   actions: [
     {
-      text: "action-1",
+      text: "action 1",
     },
     {
-      text: "action-2",
+      text: "action 2",
       variant: "secondary",
     },
   ],
@@ -52,7 +52,7 @@ Dark.args = {
 };
 Dark.decorators = [
   (Story) => (
-    <StorybookDarkMock>
+    <StorybookDarkMock bgColor="secondary">
       <Story />
     </StorybookDarkMock>
   ),
