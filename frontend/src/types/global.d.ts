@@ -34,4 +34,21 @@ declare global {
     variant?: ButtonVariant;
     action?: () => void;
   }
+
+  export interface AuthUserInterface {
+    name: { fName: string | null; lName: string | null };
+    age: number | null;
+    gender: Gender | null;
+    eduLevel?: string | null;
+    language: string | null;
+    country?: string | null;
+    email?: string | null;
+    phone?: string | null;
+    password: string | null;
+  }
+
+  export interface AuthInterface {
+    data: AuthUserInterface;
+    isAuth: boolean;
+  }
 }

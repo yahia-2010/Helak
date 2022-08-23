@@ -1,9 +1,10 @@
-import validateEmail from "@/utils/util-functions/validateEmail";
-import { useState, useEffect } from "react";
-import submitSignUp from "../services/submitSignUp";
+import { useState, useContext } from "react";
+import { AuthContext } from "@/contexts/AuthContext";
 import errorConditions from "../utils/errorConditions";
+import submitSignUp from "../services/submitSignUp";
 
 const useSignUpSubmit = (fields: FormFieldInterface[]) => {
+  const { setAuthValues } = useContext(AuthContext);
   const [dataErrors, setDataErrors] = useState<string[]>([]);
   const [reqError, setReqError] = useState<any>(null);
   const [response, setResponse] = useState<any>(null);
@@ -23,18 +24,15 @@ const useSignUpSubmit = (fields: FormFieldInterface[]) => {
         .includes(false)
     ) {
       setIsSubmitValid(false);
-      console.log("error", isSubmitValid);
-      console.log(dataErrors);
     } else {
       setIsSubmitValid(true);
-      console.log("success", isSubmitValid);
     }
   };
 
   const submit = () => {
     if (isSubmitValid) {
-      const { error, res } = submitSignUp(fields);
-      setReqError(error);
+      const { res, err } = submitSignUp(fields, setAuthValues);
+      setReqError(err);
       setResponse(res);
       console.log("submit", fields);
     }

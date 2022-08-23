@@ -1,6 +1,8 @@
-const submitSignUp = (data: FormFieldInterface[]): { error: any; res: any } => {
-  console.log("submit :", data);
-  return { error: null, res: {} };
+const submitSignUp = (
+  data: FormFieldInterface[],
+  func: (value: AuthUserInterface) => { res: any; err: any }
+): { err: any; res: any } => {
+  return { err: null, res: {} };
 };
 
 export default submitSignUp;

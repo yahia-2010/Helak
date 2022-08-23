@@ -26,7 +26,7 @@ const formFields: FormFieldInterface[] = [
   {
     name: "eduLevel",
     value: selections.eduLevels[0],
-    required: true,
+    required: false,
     type: "select",
     label: "المرحلة الدراسية",
     selections: selections.eduLevels,
