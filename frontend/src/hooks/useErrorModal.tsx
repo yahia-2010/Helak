@@ -1,5 +1,5 @@
-import Modal from "@/components/Modal";
 import React, { useEffect, useState } from "react";
+import Modal from "@/components/Modal";
 
 const useErrorModal = (error: any): React.FC => {
   const [showErrorModal, setShowErrorModal] = useState(Boolean(error));
