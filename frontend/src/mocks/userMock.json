@@ -1,0 +1,15 @@
+{
+    "name": {
+        "fName": "يحيى",
+        "lName": "براشيش"
+    },
+    "age": 14,
+    "gender": "male",
+    "eduLevel": "",
+    "language": "ar",
+    "country": "algeria",
+    "email": "123@email.com",
+    "phone": "0000000000",
+    "photo": "",
+    "password": "111111"
+}

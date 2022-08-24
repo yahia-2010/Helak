@@ -36,15 +36,15 @@ declare global {
   }
 
   interface UserInterface {
-    name: { fName: string | null; lName: string | null };
-    age: number | null;
-    gender: Gender | null;
-    eduLevel?: string | null;
-    language: string | null;
-    country?: string | null;
-    email?: string | null;
-    phone?: string | null;
-    photo?: string | null;
-    password: string | null;
+    name?: { fName?: string; lName?: string };
+    age?: number;
+    gender?: Gender;
+    eduLevel?: string;
+    language?: string;
+    country?: string;
+    email?: string;
+    phone?: string;
+    photo?: string;
+    password?: string;
   }
 }

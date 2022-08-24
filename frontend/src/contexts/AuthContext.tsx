@@ -15,17 +15,7 @@ export interface AuthContextInterface {
 const defaultValue: AuthContextInterface = {
   authValues: {
     isAuth: false,
-    data: {
-      name: { fName: null, lName: null },
-      age: null,
-      gender: null,
-      language: null,
-      password: null,
-      country: null,
-      eduLevel: null,
-      email: null,
-      phone: null,
-    },
+    data: {},
   },
   setAuthValues: () => ({ res: null, err: null }),
   getAuthValues: () => {},
