@@ -1,5 +1,10 @@
 import React, { useRef, useState } from "react";
-import { EyeIcon, EyeOffIcon, SearchIcon } from "@heroicons/react/solid";
+import {
+  EyeIcon,
+  EyeOffIcon,
+  SearchIcon,
+  UploadIcon,
+} from "@heroicons/react/solid";
 
 export interface InputProps {
   label?: string;
@@ -52,11 +57,13 @@ const Input: React.FC<InputProps> = ({
           value={value}
           className={`${className} w-full disabled:opacity-75 ${
             error ? "border border-red-400" : "border-0"
-          } rounded bg-gray-100 px-2 py-1 text-[.85rem] dark:bg-dark-secondary`}
+          } rounded bg-gray-100 text-[.85rem] dark:bg-dark-secondary ${
+            type === "file" ? "p-2 file:hidden" : "px-2 py-1"
+          }`}
         />
         {type === "password" && (
           <button
-            className="absolute left-2.5 top-1/2 -translate-y-1/2"
+            className="input-button"
             onClick={() => setPasswordVisible(!passwordVisible)}
           >
             {!passwordVisible ? (
@@ -68,12 +75,20 @@ const Input: React.FC<InputProps> = ({
         )}
         {type === "search" && (
           <button
-            className="absolute left-2.5 top-1/2 -translate-y-1/2"
+            className="input-button"
             onClick={() =>
               onSearch && onSearch((inputRef.current as any)?.value)
             }
           >
             <SearchIcon className="h-4 w-4" />
+          </button>
+        )}
+        {type === "file" && (
+          <button
+            className="input-button"
+            onClick={() => (inputRef.current as any)?.click()}
+          >
+            {<UploadIcon className="h-4 w-4" />}
           </button>
         )}
       </div>

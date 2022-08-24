@@ -19,12 +19,8 @@ const SignUp: React.FC = () => {
       <div className="w-full xs:w-[22rem]">
         <h1 className="center-title">إنشاء حساب</h1>
         <form
+          onSubmit={(e) => e.preventDefault()}
           className="flex flex-col gap-y-6 px-2"
-          onSubmit={(e) => {
-            e.preventDefault();
-            checkFields();
-            submit();
-          }}
         >
           <div className="flex flex-col gap-y-4">
             <FormRender
@@ -33,7 +29,15 @@ const SignUp: React.FC = () => {
               errors={dataErrors}
             />
           </div>
-          <Button variant="secondary" type="submit" className="mt-6 w-fit">
+          <Button
+            onClick={() => {
+              checkFields();
+              submit();
+            }}
+            variant="secondary"
+            type="submit"
+            className="mt-6 w-fit"
+          >
             إنشاء حساب
           </Button>
         </form>

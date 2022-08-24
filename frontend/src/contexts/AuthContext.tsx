@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { createContext, useState } from "react";
 
+export interface AuthInterface {
+  data: UserInterface;
+  isAuth: boolean;
+}
+
 export interface AuthContextInterface {
   authValues: AuthInterface;
-  setAuthValues: (value: AuthUserInterface) => { res: any; err: any };
+  setAuthValues: (value: UserInterface) => { res: any; err: any };
   getAuthValues: () => void;
 }
 
@@ -36,7 +41,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     isAuth,
   } as AuthInterface);
 
-  const setAuthValues = (value: AuthUserInterface) => {
+  const setAuthValues = (value: UserInterface) => {
     return { res: null, err: null };
   };
 

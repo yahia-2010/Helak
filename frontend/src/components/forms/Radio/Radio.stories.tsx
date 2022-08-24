@@ -5,7 +5,7 @@ import { StorybookDefaultDecorators } from "@/utils/util-components/StorybookDef
 import { StorybookDarkMock } from "@/mocks/storybookMocks";
 
 export default {
-  title: "Radio",
+  title: "forms/Radio",
   component: Radio,
   decorators: [
     (Story) => (

@@ -72,6 +72,14 @@ const formFields: FormFieldInterface[] = [
     label: "رقم الجوال",
   },
   {
+    name: "userPhoto",
+    value: "",
+    required: false,
+    type: "input",
+    inputType: "file",
+    label: "الصورة الشخصية",
+  },
+  {
     name: "password",
     value: "",
     required: true,

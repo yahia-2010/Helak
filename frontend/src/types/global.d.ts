@@ -35,7 +35,7 @@ declare global {
     action?: () => void;
   }
 
-  export interface AuthUserInterface {
+  interface UserInterface {
     name: { fName: string | null; lName: string | null };
     age: number | null;
     gender: Gender | null;
@@ -44,11 +44,7 @@ declare global {
     country?: string | null;
     email?: string | null;
     phone?: string | null;
+    photo?: string | null;
     password: string | null;
-  }
-
-  export interface AuthInterface {
-    data: AuthUserInterface;
-    isAuth: boolean;
   }
 }
