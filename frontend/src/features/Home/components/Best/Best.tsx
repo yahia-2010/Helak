@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import fetchBestHelak from "../../services/fetchBestHelak";
-import Card from "@/components/Card";
+import Card from "@/components/ui/Card";
 
 const Best: React.FC = () => {
   const [data, setData] = useState<HalakaInterface[]>([]);

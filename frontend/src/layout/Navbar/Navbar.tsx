@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
             )}
           </button>
           <div
-            className={width > 640 ? "v-divider" : "h-divider"}
+            className={width > 640 ? "v-divider" : "h-divider my-2 w-[75%]"}
             style={{
               margin: `0 ${width > 640 ? "-0.25rem" : "0"}`,
             }}

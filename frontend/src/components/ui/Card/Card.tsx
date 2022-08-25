@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../Button";
-import HalakaDefaultPictureTemp from "@/assets/images/halaka-default-picture-temp.svg";
+import Button from "../../Button";
+import HalakaDefaultPictureTemp from "@/assets/temp/halaka-default-picture-temp.svg";
 
 export interface CardPropsInterface {
   title: string;

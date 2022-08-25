@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "@/components/Card";
+import Card from "@/components/ui/Card";
 import DropdownMenu from "@/components/DropdownMenu";
 import Input from "@/components/forms/Input";
 import filters from "@/features/Helak/data/filters";

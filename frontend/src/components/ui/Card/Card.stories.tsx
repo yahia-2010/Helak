@@ -6,7 +6,7 @@ import { StorybookDarkMock } from "@/mocks/storybookMocks";
 import dummyText from "@/utils/util-data/dummyText";
 
 export default {
-  title: "Card",
+  title: "UI/Card",
   component: Card,
   decorators: [
     (Story) => (

@@ -68,7 +68,7 @@ input:not(.no-ring) {
 }
 
 .h-divider {
-  @apply my-2 w-[75%] border-t-[1px] border-black opacity-20 dark:border-white dark:opacity-30;
+  @apply border-t-[1px] border-black opacity-20 dark:border-white dark:opacity-30;
 }
 
 .input-button {
