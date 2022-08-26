@@ -1,15 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
 import userMock from "@/mocks/userMock.json";
 import { UserCircleIcon } from "@heroicons/react/solid";
+import List from "@/components/ui/List";
 
 const Profile: React.FC = () => {
   const { authValues } = useContext(AuthContext);
   const userData = authValues?.data || userMock;
 
   const name = `${userData.name?.fName} ${userData.name?.lName}`;
-
-  console.log(userData.photo);
 
   return (
     <section className="p-8">
@@ -28,6 +27,19 @@ const Profile: React.FC = () => {
       <div className="mt-20 px-12">
         <div className="">
           <h2 className="text-4xl">الحِلَق</h2>
+          <List
+            itemBg={{
+              dark: { default: "primary", hover: "primary" },
+              light: { default: "white", hover: "white" },
+            }}
+            items={
+              userData?.helak?.map((halaka) => ({
+                label: halaka.name,
+                image: halaka?.image,
+                url: `/halaka?id=${halaka.id}`,
+              })) || []
+            }
+          />
         </div>
       </div>
     </section>

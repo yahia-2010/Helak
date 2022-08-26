@@ -46,5 +46,6 @@ declare global {
     phone?: string;
     photo?: string;
     password?: string;
+    helak?: HalakaInterface[];
   }
 }

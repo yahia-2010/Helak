@@ -44,3 +44,16 @@ WithImages.args = {
     { label: "item 3", image: HalakaDefaultPictureTemp },
   ],
 };
+
+export const Dark = Template.bind({});
+Dark.args = {
+  label: "dark list",
+  items: [{ label: "item 1" }, { label: "item 2" }, { label: "item 3" }],
+};
+Dark.decorators = [
+  (Story) => (
+    <StorybookDarkMock>
+      <Story />
+    </StorybookDarkMock>
+  ),
+];

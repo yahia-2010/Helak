@@ -11,5 +11,13 @@
     "email": "123@email.com",
     "phone": "0000000000",
     "photo": "",
-    "password": "111111"
+    "password": "111111",
+    "helak": [
+        {
+            "id": 1,
+            "name": "halaka-1",
+            "free": false,
+            "online": false
+        }
+    ]
 }
