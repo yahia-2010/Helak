@@ -23,10 +23,10 @@ const List: React.FC<ListPropsInterface> = ({
   itemBg,
 }) => {
   return (
-    <div className="p-6">
+    <div className={`${className}`}>
       {label && <span className="text-lg">{label}</span>}
       <div
-        className={`${className} shadow-hover mt-2 rounded bg-white shadow-md dark:bg-dark-secondary`}
+        className={`shadow-hover mt-2 rounded bg-white shadow-md dark:bg-dark-secondary`}
       >
         {items.map((item, index) => (
           <>

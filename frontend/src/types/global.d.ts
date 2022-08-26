@@ -47,5 +47,6 @@ declare global {
     photo?: string;
     password?: string;
     helak?: HalakaInterface[];
+    amounts?: { name: string; finished: number; left: number; total: number }[];
   }
 }

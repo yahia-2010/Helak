@@ -38,14 +38,14 @@ const ListItem: React.FC<ListItemInterface> = ({
         darkBg.hover === "primary"
           ? "dark:hover:bg-dark-primary"
           : "dark:hover:bg-dark-secondary"
-      } flex h-12 w-full items-center overflow-hidden p-3 transition first:rounded-t last:rounded-b`}
+      } flex h-12 w-full items-center overflow-hidden p-3 transition first-of-type:rounded-t last-of-type:rounded-b`}
     >
       {image && (
         <img src={image} alt={label} className="ml-4 aspect-square h-full" />
       )}
       <div className="flex w-1/2 items-center justify-between">
-        <span className="">{label}</span>
-        {label2 && <span className="">{label2}</span>}
+        <span>{label}</span>
+        {label2 && <span>{label2}</span>}
       </div>
     </button>
   );

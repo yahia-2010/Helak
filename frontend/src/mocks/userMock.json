@@ -19,5 +19,25 @@
             "free": false,
             "online": false
         }
+    ],
+    "amounts": [
+        {
+            "name": "الحفظ",
+            "finished": 13,
+            "left": 2,
+            "total": 15
+        },
+        {
+            "name": "التثبيت",
+            "finished": 60,
+            "left": 0,
+            "total": 60
+        },
+        {
+            "name": "المراجعة",
+            "finished": 100,
+            "left": 0,
+            "total": 100
+        }
     ]
 }

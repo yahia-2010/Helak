@@ -10,6 +10,26 @@ const Profile: React.FC = () => {
 
   const name = `${userData.name?.fName} ${userData.name?.lName}`;
 
+  const defaultListProps: {
+    className: string;
+    itemBg: {
+      dark: {
+        default: "primary" | "secondary";
+        hover: "primary" | "secondary";
+      };
+      light: {
+        default: "white" | "gray";
+        hover: "white" | "gray";
+      };
+    };
+  } = {
+    className: "py-4",
+    itemBg: {
+      dark: { default: "primary", hover: "primary" },
+      light: { default: "white", hover: "white" },
+    },
+  };
+
   return (
     <section className="p-8">
       <div className="flex w-full items-center gap-x-4">
@@ -24,19 +44,28 @@ const Profile: React.FC = () => {
         )}
         <h1 className="text-5xl">{name}</h1>
       </div>
-      <div className="mt-20 px-12">
-        <div className="">
+      <div className="mt-14 px-12">
+        <div className="mt-14">
           <h2 className="text-4xl">الحِلَق</h2>
           <List
-            itemBg={{
-              dark: { default: "primary", hover: "primary" },
-              light: { default: "white", hover: "white" },
-            }}
+            {...defaultListProps}
             items={
               userData?.helak?.map((halaka) => ({
                 label: halaka.name,
                 image: halaka?.image,
                 url: `/halaka?id=${halaka.id}`,
+              })) || []
+            }
+          />
+        </div>
+        <div className="mt-14">
+          <h2 className="text-4xl">مقادير الحفظ</h2>
+          <List
+            {...defaultListProps}
+            items={
+              userData?.amounts?.map((amount) => ({
+                label: `${amount.name} : `,
+                label2: `${amount.total}/${amount.finished}`,
               })) || []
             }
           />
