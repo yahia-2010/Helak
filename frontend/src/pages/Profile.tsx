@@ -4,6 +4,7 @@ import userMock from "@/mocks/userMock.json";
 import { UserCircleIcon } from "@heroicons/react/solid";
 import List from "@/components/ui/List";
 import { Line } from "react-chartjs-2";
+import lineColors from "@/features/Profile/data/lineColors";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -35,7 +36,7 @@ const Profile: React.FC = () => {
   >({
     labels: userData?.memorized?.map((item) => item.date),
     datasets: userData?.amounts
-      ? userData?.amounts?.map((amount) => ({
+      ? userData?.amounts?.map((amount, index) => ({
           label: amount.name,
           data:
             userData?.memorized &&
@@ -48,8 +49,17 @@ const Profile: React.FC = () => {
                 )
               : []),
           fill: false,
-          backgroundColor: `rgb(${randomColorGenerator()})`,
+          backgroundColor: `${
+            (userData?.amounts as any)?.length <= lineColors.length
+              ? lineColors[index]
+              : `rgb(${randomColorGenerator()})`
+          }`,
           tension: 0.1,
+          borderColor: `${
+            (userData?.amounts as any)?.length <= lineColors.length
+              ? lineColors[index]
+              : `rgb(${randomColorGenerator()})`
+          }`,
         }))
       : [],
   });
@@ -81,7 +91,7 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <section className="center flex w-full flex-col p-8">
+    <section className="center flex h-full min-h-screen w-full p-8">
       <div className="w-[97.5%] max-w-[70rem] sm:w-[85%] md:w-[80%]">
         <div className="center mb-24 mt-0 flex w-full sm:mb-12 sm:mt-6">
           <div className="flex flex-col items-center gap-4 sm:flex-row">
