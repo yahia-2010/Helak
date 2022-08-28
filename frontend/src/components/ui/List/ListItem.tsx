@@ -6,6 +6,9 @@ export interface ListItemInterface {
   label2?: string;
   image?: string;
   url?: string;
+}
+
+interface ListItemPropsInterface extends ListItemInterface {
   className?: string;
   lightBg?: { default?: "white" | "gray"; hover?: "white" | "gray" };
   darkBg?: {
@@ -14,7 +17,7 @@ export interface ListItemInterface {
   };
 }
 
-const ListItem: React.FC<ListItemInterface> = ({
+const ListItem: React.FC<ListItemPropsInterface> = ({
   label,
   label2,
   image,

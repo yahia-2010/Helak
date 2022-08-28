@@ -48,5 +48,14 @@ declare global {
     password?: string;
     helak?: HalakaInterface[];
     amounts?: { name: string; finished: number; left: number; total: number }[];
+    memorized?: {
+      amounts: {
+        name: string;
+        finished: number;
+        left: number;
+        total: number;
+      }[];
+      date: string;
+    }[];
   }
 }
