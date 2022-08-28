@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   const { width } = useWindowDimensions();
 
   return (
-    <nav className="static top-0 left-0 z-40 flex w-full min-w-[300px] items-center justify-between bg-white py-2 px-4 shadow-md dark:bg-dark-primary sm:relative">
+    <nav className="top-0 left-0 z-40 flex w-full min-w-[300px] items-center justify-between bg-white py-3 px-4 shadow-md dark:bg-dark-primary sm:relative sm:py-2">
       <Link to="/" className="mr-2 text-lg">
         حِلَق
       </Link>

@@ -81,99 +81,103 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <section className="p-8">
-      <div className="flex w-full items-center gap-x-4">
-        {userData.photo ? (
-          <img
-            src={userData.photo}
-            alt={name}
-            className="h-72 w-72 rounded-full border-4 border-gray-200 p-6 dark:border-dark-primary"
-          />
-        ) : (
-          <UserCircleIcon className="h-72 w-72" />
-        )}
-        <h1 className="text-5xl">{name}</h1>
-      </div>
-      <div className="px-12">
-        <div className="mt-10">
-          <h2 className="text-4xl">الحِلَق</h2>
-          <List
-            {...defaultListProps}
-            items={
-              userData?.helak?.map((halaka) => ({
-                label: halaka.name,
-                image: halaka?.image,
-                url: `/halaka?id=${halaka.id}`,
-              })) || []
-            }
-          />
+    <section className="center flex w-full flex-col p-8">
+      <div className="w-[97.5%] max-w-[70rem] sm:w-[85%] md:w-[80%]">
+        <div className="center mb-24 mt-0 flex w-full sm:mb-12 sm:mt-6">
+          <div className="flex flex-col items-center gap-4 sm:flex-row">
+            {userData.photo ? (
+              <img
+                src={userData.photo}
+                alt={name}
+                className="h-72 w-72 rounded-full border-4 border-gray-200 p-6 dark:border-dark-primary"
+              />
+            ) : (
+              <UserCircleIcon className="h-72 w-72" />
+            )}
+            <h1 className="text-5xl">{name}</h1>
+          </div>
         </div>
-        <div className="mt-20">
-          <h2 className="text-4xl">مقادير الحفظ</h2>
-          <List
-            {...defaultListProps}
-            items={
-              userData?.amounts?.map((amount) => ({
-                label: `${amount.name} : `,
-                label2: `${amount.total}/${amount.finished}`,
-              })) || []
-            }
-          />
-        </div>
-        <div className="mt-20">
-          <h2 className="text-4xl">الإنجاز</h2>
-          <div className="mt-6 h-fit w-full rounded bg-white p-4 dark:bg-dark-primary">
-            <Line
-              data={memorizedChartData}
-              fallbackContent={
-                <div className="center flex h-full w-full">
-                  <span className="text-lg">يتعذر عرض الرسم البياني</span>
-                </div>
+        <div className="flex w-full flex-col gap-y-16 sm:gap-y-20">
+          <div>
+            <h2 className="text-4xl">الحِلَق</h2>
+            <List
+              {...defaultListProps}
+              items={
+                userData?.helak?.map((halaka) => ({
+                  label: halaka.name,
+                  image: halaka?.image,
+                  url: `/halaka?id=${halaka.id}`,
+                })) || []
               }
             />
           </div>
-        </div>
-        <div className="mt-20">
-          <h2 className="text-4xl">المعلومات الشخصية</h2>
-          <List
-            {...defaultListProps}
-            items={
-              [
-                {
-                  label: "الاسم : ",
-                  label2: name,
-                },
-                {
-                  label: "العمر : ",
-                  label2: `${userData?.age}`,
-                },
-                {
-                  label: "الجنس : ",
-                  label2: userData?.gender,
-                },
-                {
-                  label: "المرحلة الدراسية : ",
-                  label2: userData?.eduLevel || "غير متوفر",
-                },
-                {
-                  label: "الدولة : ",
-                  label2: userData?.country || "غير متوفر",
-                },
-                {
-                  label: "اللغة : ",
-                  label2: userData?.language || "غير متوفر",
-                },
-                {
-                  label: "رقم الهاتف : ",
-                  label2: userData?.phone || "غير متوفر",
-                },
-                {
-                  label: "البريد الإلكتروني : ",
-                  label2: userData?.email,
-                },
-              ] || []
-            }
-          />
+          <div>
+            <h2 className="text-4xl">مقادير الحفظ</h2>
+            <List
+              {...defaultListProps}
+              items={
+                userData?.amounts?.map((amount) => ({
+                  label: `${amount.name} : `,
+                  label2: `${amount.total}/${amount.finished}`,
+                })) || []
+              }
+            />
+          </div>
+          <div>
+            <h2 className="text-4xl">الإنجاز</h2>
+            <div className="mt-6 h-fit w-full rounded bg-white p-4 dark:bg-dark-primary">
+              <Line
+                data={memorizedChartData}
+                fallbackContent={
+                  <div className="center flex h-full w-full">
+                    <span className="text-lg">يتعذر عرض الرسم البياني</span>
+                  </div>
+                }
+              />
+            </div>
+          </div>
+          <div>
+            <h2 className="text-4xl">المعلومات الشخصية</h2>
+            <List
+              {...defaultListProps}
+              items={
+                [
+                  {
+                    label: "الاسم : ",
+                    label2: name,
+                  },
+                  {
+                    label: "العمر : ",
+                    label2: `${userData?.age}`,
+                  },
+                  {
+                    label: "الجنس : ",
+                    label2: userData?.gender,
+                  },
+                  {
+                    label: "المرحلة الدراسية : ",
+                    label2: userData?.eduLevel || "غير متوفر",
+                  },
+                  {
+                    label: "الدولة : ",
+                    label2: userData?.country || "غير متوفر",
+                  },
+                  {
+                    label: "اللغة : ",
+                    label2: userData?.language || "غير متوفر",
+                  },
+                  {
+                    label: "رقم الهاتف : ",
+                    label2: userData?.phone || "غير متوفر",
+                  },
+                  {
+                    label: "البريد الإلكتروني : ",
+                    label2: userData?.email || "غير متوفر",
+                  },
+                ] || []
+              }
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -46,9 +46,9 @@ const ListItem: React.FC<ListItemPropsInterface> = ({
       {image && (
         <img src={image} alt={label} className="ml-4 aspect-square h-full" />
       )}
-      <div className="flex w-1/2 items-center justify-between">
-        <span>{label}</span>
-        {label2 && <span>{label2}</span>}
+      <div className="flex w-full items-center justify-between sm:w-1/2">
+        <span className="whitespace-nowrap">{label}</span>
+        {label2 && <span className="whitespace-nowrap">{label2}</span>}
       </div>
     </button>
   );
