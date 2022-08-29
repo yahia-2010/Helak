@@ -3,14 +3,20 @@ import { Link } from "react-router-dom";
 import { MenuIcon, MoonIcon, SunIcon, XIcon } from "@heroicons/react/solid";
 import DropdownMenu from "@/components/DropdownMenu";
 import A from "@/components/A";
-import { dropdownMenuItems, navbarLinks } from "../data/navbar";
+import {
+  dropdownMenuItems1,
+  dropdownMenuItems2,
+  navbarLinks,
+} from "../data/navbar";
 import { Transition } from "@headlessui/react";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { ThemeContext } from "@/contexts/ThemeContext";
+import { AuthContext } from "@/contexts/AuthContext";
 
 const Navbar: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const { authValues } = useContext(AuthContext);
   const { width } = useWindowDimensions();
 
   return (
@@ -56,17 +62,31 @@ const Navbar: React.FC = () => {
             }}
           />
           {navbarLinks.map((link, index) => (
-            <A
-              key={index}
-              href={link.url}
-              navLink={true}
-              className="text-[.8rem]"
-            >
+            <A key={index} href={link.url} navLink className="text-[.8rem]">
               {link.text}
             </A>
           ))}
 
-          <DropdownMenu button="حسابي" items={dropdownMenuItems} />
+          <DropdownMenu
+            button="حسابي"
+            items={
+              authValues.isAuth
+                ? dropdownMenuItems2.map((item) => ({
+                    ...item,
+                    url: (
+                      item as {
+                        text: string;
+                        url: (id: string | number) => string;
+                      }
+                    ).url(
+                      authValues.data?.helak
+                        ? authValues.data?.helak[0]?.id
+                        : "no-halaka"
+                    ),
+                  }))
+                : dropdownMenuItems1
+            }
+          />
         </div>
         <Transition
           show={isMenuVisible}
