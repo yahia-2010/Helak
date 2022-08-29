@@ -5,7 +5,7 @@ import { StorybookDefaultDecorators } from "@/utils/util-components/StorybookDef
 import { StorybookDarkMock } from "@/mocks/storybookMocks";
 
 export default {
-  title: "Hero",
+  title: "home/Hero",
   component: Hero,
   decorators: [
     (Story) => (
