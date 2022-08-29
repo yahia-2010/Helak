@@ -4,6 +4,26 @@ import Navbar from "./layout/Navbar";
 import Footer from "./layout/Footer";
 import { AuthContext } from "./contexts/AuthContext";
 import unprotectedRoutes from "./data/unprotectedRoutes";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const App: React.FC = () => {
   const { authValues } = useContext(AuthContext);

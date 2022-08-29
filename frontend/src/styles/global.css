@@ -34,11 +34,11 @@ input:not(.no-ring) {
 }
 
 ::selection {
-  @apply bg-color-primary text-white;
+  @apply bg-color-primary bg-opacity-90 text-white;
 }
 
 ::-moz-selection {
-  @apply bg-color-primary text-white;
+  @apply bg-color-primary bg-opacity-90 text-white;
 }
 
 .center-title {

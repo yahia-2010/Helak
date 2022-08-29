@@ -8,16 +8,17 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import {
   dropdownMenuItems1,
   dropdownMenuItems2,
-  navbarLinks,
+  navbarLinks1,
+  navbarLinks2,
 } from "../data/navbar";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import { AuthContext } from "@/contexts/AuthContext";
 
 const Navbar: React.FC = () => {
-  const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const { theme, toggleTheme } = useContext(ThemeContext);
   const { authValues } = useContext(AuthContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const { width } = useWindowDimensions();
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
     <nav className="top-0 left-0 z-40 flex w-full min-w-[300px] items-center justify-between bg-white py-3 px-4 shadow-md dark:bg-dark-primary sm:relative sm:py-2">
@@ -61,26 +62,30 @@ const Navbar: React.FC = () => {
               margin: `0 ${width > 640 ? "-0.25rem" : "0"}`,
             }}
           />
-          {navbarLinks.map((link, index) => (
-            <A key={index} href={link.url} navLink className="text-[.8rem]">
-              {link.text}
-            </A>
-          ))}
+          {authValues.isAuth
+            ? navbarLinks2.map((link, index) => (
+                <A
+                  key={index}
+                  href={`${link.url}${
+                    authValues.data?.helak && link.url === "/halaka"
+                      ? `?id=${authValues.data?.helak[0]?.id}`
+                      : ""
+                  }`}
+                  navLink
+                  className="text-[.8rem]"
+                >
+                  {link.text}
+                </A>
+              ))
+            : navbarLinks1.map((link, index) => (
+                <A key={index} href={link.url} navLink className="text-[.8rem]">
+                  {link.text}
+                </A>
+              ))}
 
           <DropdownMenu
             button="حسابي"
-            items={
-              authValues.isAuth
-                ? dropdownMenuItems2.map((item) => ({
-                    ...item,
-                    url: `${item.url}${
-                      authValues.data?.helak
-                        ? `?id=${authValues.data?.helak[0]?.id}`
-                        : ""
-                    }`,
-                  }))
-                : dropdownMenuItems1
-            }
+            items={authValues.isAuth ? dropdownMenuItems2 : dropdownMenuItems1}
           />
         </div>
         <Transition

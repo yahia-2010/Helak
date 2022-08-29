@@ -57,7 +57,7 @@ const Halaka: React.FC = () => {
     <section className="center flex h-full min-h-screen w-full p-8">
       <ErrorModal />
       <div className="w-[97.5%] max-w-[70rem] sm:w-[85%] md:w-[80%]">
-        <div className="center mb-24 mt-0 flex w-full flex-col gap-y-6 sm:mb-12 sm:mt-6">
+        <div className="center sm:mb-18 mb-24 mt-0 flex w-full flex-col gap-y-6 sm:mt-6">
           <div
             style={{
               backgroundImage: `url(${
@@ -66,7 +66,10 @@ const Halaka: React.FC = () => {
             }}
             className="aspect-square w-72 rounded-2xl bg-cover bg-no-repeat"
           />
-          <h1 className="text-5xl">{`${halaka?.name}`}</h1>
+          <h1 className="text-5xl">{halaka?.name}</h1>
+          {halaka?.description && (
+            <p className="-mt-4">{halaka?.description}</p>
+          )}
         </div>
         <div className="flex w-full flex-col gap-y-16 sm:gap-y-20">
           <div>

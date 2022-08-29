@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 interface DropdownMenuItem {
   text: string;
   url?: string;
+  warning?: boolean;
   action?: (text: string) => void;
 }
 
@@ -13,8 +14,8 @@ export interface DropdownMenuProps {
   items: DropdownMenuItem[];
   button: string;
   label?: string;
-  menuClasses?: string;
-  menuItemClasses?: string;
+  menuClassName?: string;
+  menuItemClassName?: string;
   buttonClasses?: string;
 }
 
@@ -22,8 +23,8 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
   items,
   button,
   label,
-  menuClasses = "",
-  menuItemClasses = "",
+  menuClassName = "",
+  menuItemClassName = "",
   buttonClasses = "",
 }) => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
           leaveTo="transform opacity-0 -translate-y-1"
         >
           <Menu.Items
-            className={`${menuClasses} absolute top-[130%] right-0 z-20 flex flex-col gap-y-1 rounded bg-white py-2 px-3 shadow-md dark:bg-dark-primary xs:left-0 xs:right-auto`}
+            className={`${menuClassName} absolute top-[130%] right-0 z-20 flex flex-col gap-y-1 rounded bg-white py-2 px-3 shadow-md dark:bg-dark-primary xs:left-0 xs:right-auto`}
           >
             {items.map((item, index) => {
               return (
@@ -61,9 +62,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                         item.action && item.action(item.text);
                         item.url && navigate(item.url);
                       }}
-                      className={`${menuItemClasses} whitespace-nowrap rounded py-2 px-3 text-right text-sm ${
-                        active && "bg-gray-100 dark:bg-dark-secondary"
-                      }`}
+                      className={`${menuItemClassName} whitespace-nowrap rounded py-2 px-3 text-right text-sm ${
+                        item.warning ? "text-red-500 dark:text-red-300" : ""
+                      } ${active && "bg-gray-100 dark:bg-dark-secondary"}`}
                     >
                       {item.text}
                     </button>

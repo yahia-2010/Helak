@@ -6,15 +6,18 @@ export const dropdownMenuItems1 = [
 
 export const dropdownMenuItems2 = [
   { text: "ملفي الشخصي", url: "/profile" },
-  {
-    text: "الحلقة",
-    url: "/halaka",
-  },
-  { text: "تسجيل الخروج", url: "/logout" },
+  { text: "إنشائي", url: "/my-helak" },
+  { text: "تسجيل الخروج", url: "/logout", warning: true },
 ];
 
-export const navbarLinks = [
+export const navbarLinks1 = [
   { text: "الصفحة الرئيسة", url: "/" },
+  { text: "حلقات التحفيظ", url: "/helak" },
+  { text: "حول حِلَق", url: "/about" },
+];
+
+export const navbarLinks2 = [
+  { text: "حلقتي", url: "/halaka" },
   { text: "حلقات التحفيظ", url: "/helak" },
   { text: "حول حِلَق", url: "/about" },
 ];

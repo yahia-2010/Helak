@@ -28,12 +28,13 @@ const Card: React.FC<CardPropsInterface> = ({
 
   const children = (
     <>
-      <img
-        className={`aspect-square rounded-t-lg dark:text-dark-primary ${
-          !image && "bg-gray-300 p-12 opacity-50"
+      <div
+        className={`aspect-square rounded-t-lg bg-no-repeat dark:text-dark-primary ${
+          !image
+            ? "bg-gray-300 bg-contain bg-center opacity-50"
+            : " bg-cover bg-center"
         }`}
-        src={image || HalakaDefaultPictureTemp}
-        alt={`${title}-image`}
+        style={{ backgroundImage: `url(${image || HalakaDefaultPictureTemp})` }}
       />
       <div className="flex flex-col gap-y-2 p-5">
         <h2 className="text-xl">{title}</h2>

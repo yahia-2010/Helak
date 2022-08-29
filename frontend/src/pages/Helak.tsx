@@ -80,7 +80,7 @@ const Helak: React.FC = () => {
           button={filter.text}
           label="إظهار الحِلَق"
           buttonClasses="bg-white dark:bg-dark-primary"
-          menuItemClasses="pl-8"
+          menuItemClassName="pl-8"
         />
       </div>
       <div className="center flex w-full flex-wrap gap-12 p-6 xs:py-10 xs:px-8">
