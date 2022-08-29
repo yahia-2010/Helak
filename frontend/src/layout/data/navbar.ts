@@ -6,8 +6,11 @@ export const dropdownMenuItems1 = [
 
 export const dropdownMenuItems2 = [
   { text: "ملفي الشخصي", url: "/profile" },
-  { text: "الحلقة", url: (id: number | string): string => `helak?id=${id}` },
-  { text: "تسخيل الخروج", url: "/logout" },
+  {
+    text: "الحلقة",
+    url: "/halaka",
+  },
+  { text: "تسجيل الخروج", url: "/logout" },
 ];
 
 export const navbarLinks = [

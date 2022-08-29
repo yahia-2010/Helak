@@ -3,7 +3,7 @@ import Card from "@/components/ui/Card";
 import DropdownMenu from "@/components/DropdownMenu";
 import Input from "@/components/forms/Input";
 import filters from "@/features/Helak/data/filters";
-import fetchHelak from "@/features/Helak/services/fetchHelak";
+import fetchHelak from "@/services/fetchHelak";
 import useErrorModal from "@/hooks/useErrorModal";
 import useSearch from "@/hooks/useSearch";
 
@@ -91,7 +91,7 @@ const Helak: React.FC = () => {
               title={halaka.name}
               description={halaka.description}
               image={halaka.image}
-              url={`/helak/halaka?id=${halaka.id}`}
+              url={`/halaka?id=${halaka.id}`}
               className="bg-white dark:bg-dark-primary"
             />
           );

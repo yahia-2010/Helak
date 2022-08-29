@@ -1,1 +1,1 @@
-export default ["/", "/login", "/signup", "/helak", "/about"];
+export default ["/", "/login", "/signup", "/helak", "/about", "/halaka"];

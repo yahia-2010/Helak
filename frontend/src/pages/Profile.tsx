@@ -1,36 +1,15 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
-import userMock from "@/mocks/userMock.json";
 import { UserCircleIcon } from "@heroicons/react/solid";
 import List from "@/components/ui/List";
 import { Line } from "react-chartjs-2";
 import lineColors from "@/features/Profile/data/lineColors";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartData,
-} from "chart.js";
+import { ChartData } from "chart.js";
 import randomColorGenerator from "@/utils/util-functions/randomColorGenerator";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 const Profile: React.FC = () => {
   const { authValues } = useContext(AuthContext);
-  const userData = authValues?.data || userMock;
+  const userData = authValues?.data;
   const [memorizedChartData] = useState<
     ChartData<"line", (number | undefined)[] | undefined, string>
   >({
@@ -99,10 +78,10 @@ const Profile: React.FC = () => {
               <img
                 src={userData.photo}
                 alt={name}
-                className="h-72 w-72 rounded-full border-4 border-gray-200 p-6 dark:border-dark-primary"
+                className="aspect-square w-72 rounded-full border-4 border-gray-200 p-6 dark:border-dark-primary"
               />
             ) : (
-              <UserCircleIcon className="h-72 w-72" />
+              <UserCircleIcon className="aspect-square w-72" />
             )}
             <h1 className="text-5xl">{name}</h1>
           </div>

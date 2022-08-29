@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { Transition } from "@headlessui/react";
 import { MenuIcon, MoonIcon, SunIcon, XIcon } from "@heroicons/react/solid";
 import DropdownMenu from "@/components/DropdownMenu";
 import A from "@/components/A";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 import {
   dropdownMenuItems1,
   dropdownMenuItems2,
   navbarLinks,
 } from "../data/navbar";
-import { Transition } from "@headlessui/react";
-import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import { AuthContext } from "@/contexts/AuthContext";
 
@@ -73,16 +73,11 @@ const Navbar: React.FC = () => {
               authValues.isAuth
                 ? dropdownMenuItems2.map((item) => ({
                     ...item,
-                    url: (
-                      item as {
-                        text: string;
-                        url: (id: string | number) => string;
-                      }
-                    ).url(
+                    url: `${item.url}${
                       authValues.data?.helak
-                        ? authValues.data?.helak[0]?.id
-                        : "no-halaka"
-                    ),
+                        ? `?id=${authValues.data?.helak[0]?.id}`
+                        : ""
+                    }`,
                   }))
                 : dropdownMenuItems1
             }

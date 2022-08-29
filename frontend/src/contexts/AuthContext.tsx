@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { createContext, useState } from "react";
+import userMock from "@/mocks/userMock.json";
 
 export interface AuthInterface {
   data: UserInterface;
@@ -26,9 +27,10 @@ export const AuthContext = createContext<AuthContextInterface>(defaultValue);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
   const [authValues, _setAuthValues] = useState<AuthInterface>({
     isAuth,
+    data: userMock,
   } as AuthInterface);
 
   const setAuthValues = (value: UserInterface) => {

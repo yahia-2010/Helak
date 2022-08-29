@@ -3,6 +3,7 @@
         "id": 1,
         "name": "حلقة 1",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, excepturi.",
+        "image": "src/assets/temp/courses-77.jpg",
         "free": false,
         "online": false
     },

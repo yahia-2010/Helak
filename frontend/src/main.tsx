@@ -16,13 +16,36 @@ import Home from "./pages/Home";
 import Helak from "./pages/Helak";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import Halaka from "./pages/Halaka";
 
-// Context
+// Contexts
 import AllProviders from "./contexts/AllProviders";
 
 // Styles
 import "@/styles/index.css";
 import "@/styles/global.css";
+
+// Other
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -34,6 +57,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <Route path="helak" element={<Helak />} />
             <Route path="about" element={<About />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="halaka" element={<Halaka />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
