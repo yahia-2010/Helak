@@ -1,11 +1,11 @@
 import React from "react";
 import A from "@/components/A";
 
-interface ErrorPageProps {
+interface ErrorPagePropsInterface {
   status: number;
 }
 
-const ErrorPage: React.FC<ErrorPageProps> = ({ status }) => {
+const ErrorPage: React.FC<ErrorPagePropsInterface> = ({ status }) => {
   return (
     <section className="center flex h-screen w-full">
       <div className="center flex w-full flex-col">
