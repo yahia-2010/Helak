@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useErrorModal from "@/hooks/useErrorModal";
-import fetchHalaka from "@/services/fetchHalaka";
+import fetchHalakaById from "@/services/helak/fetchHalakaById";
 import HalakaDefaultPictureTemp from "@/assets/temp/halaka-default-picture-temp.svg";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import List from "@/components/ui/List";
@@ -26,7 +26,7 @@ const Halaka: React.FC = () => {
 
   useEffect(() => {
     if (halakaId) {
-      const { res, err } = fetchHalaka(halakaId);
+      const { res, err } = fetchHalakaById(halakaId);
       setError(err);
       setHalaka(res);
     }

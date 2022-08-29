@@ -64,7 +64,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
                       }}
                       className={`${menuItemClassName} whitespace-nowrap rounded py-2 px-3 text-right text-sm ${
                         item.warning ? "text-red-500 dark:text-red-300" : ""
-                      } ${active && "bg-gray-100 dark:bg-dark-secondary"}`}
+                      } ${active ? "bg-gray-100 dark:bg-dark-secondary" : ""}`}
                     >
                       {item.text}
                     </button>

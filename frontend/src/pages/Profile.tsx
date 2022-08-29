@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
 import { UserCircleIcon } from "@heroicons/react/solid";
 import List from "@/components/ui/List";
@@ -6,21 +6,26 @@ import { Line } from "react-chartjs-2";
 import lineColors from "@/features/Profile/data/lineColors";
 import { ChartData } from "chart.js";
 import randomColorGenerator from "@/utils/util-functions/randomColorGenerator";
+import fetchHalakaById from "@/services/helak/fetchHalakaById";
+import useErrorModal from "@/hooks/useErrorModal";
 
 const Profile: React.FC = () => {
   const { authValues } = useContext(AuthContext);
   const userData = authValues?.data;
+  const [helak, setHelak] = useState<HalakaInterface[]>([]);
+  const [error, setError] = useState<any>(null);
+  const ErrorModal = useErrorModal(error);
   const [memorizedChartData] = useState<
     ChartData<"line", (number | undefined)[] | undefined, string>
   >({
-    labels: userData?.memorized?.map((item) => item.date),
-    datasets: userData?.amounts
-      ? userData?.amounts?.map((amount, index) => ({
+    labels: userData.memorized?.map((item) => item.date),
+    datasets: userData.amounts
+      ? userData.amounts?.map((amount, index) => ({
           label: amount.name,
           data:
-            userData?.memorized &&
-            (userData?.memorized?.length > 0
-              ? userData?.memorized?.map(
+            userData.memorized &&
+            (userData.memorized?.length > 0
+              ? userData.memorized?.map(
                   (item) =>
                     item.amounts.find(
                       (itemAmount) => itemAmount.name === amount.name
@@ -29,13 +34,13 @@ const Profile: React.FC = () => {
               : []),
           fill: false,
           backgroundColor: `${
-            (userData?.amounts as any)?.length <= lineColors.length
+            (userData.amounts as any)?.length <= lineColors.length
               ? lineColors[index]
               : `rgb(${randomColorGenerator()})`
           }`,
           tension: 0.1,
           borderColor: `${
-            (userData?.amounts as any)?.length <= lineColors.length
+            (userData.amounts as any)?.length <= lineColors.length
               ? lineColors[index]
               : `rgb(${randomColorGenerator()})`
           }`,
@@ -43,11 +48,23 @@ const Profile: React.FC = () => {
       : [],
   });
 
-  const name = userData?.name?.fName
+  const name = userData.name?.fName
     ? `${userData.name?.fName}${
-        userData?.name?.lName ? ` ${userData.name?.lName}` : ""
+        userData.name?.lName ? ` ${userData.name?.lName}` : ""
       }`
     : "";
+
+  useEffect(() => {
+    setHelak(() => {
+      return userData.helak
+        ?.map((id) => {
+          const { res, err } = fetchHalakaById(id);
+          setError(err);
+          return res as HalakaInterface;
+        })
+        .filter((halaka) => halaka);
+    });
+  }, []);
 
   const defaultListProps: {
     className: string;
@@ -71,6 +88,7 @@ const Profile: React.FC = () => {
 
   return (
     <section className="center flex h-full min-h-screen w-full p-8">
+      <ErrorModal />
       <div className="w-[97.5%] max-w-[70rem] sm:w-[85%] md:w-[80%]">
         <div className="center mb-24 mt-0 flex w-full sm:mb-12 sm:mt-6">
           <div className="flex flex-col items-center gap-4 sm:flex-row">
@@ -92,7 +110,7 @@ const Profile: React.FC = () => {
             <List
               {...defaultListProps}
               items={
-                userData?.helak?.map((halaka) => ({
+                helak?.map((halaka) => ({
                   label: halaka.name,
                   image: halaka?.image,
                   url: `/halaka?id=${halaka.id}`,
@@ -105,7 +123,7 @@ const Profile: React.FC = () => {
             <List
               {...defaultListProps}
               items={
-                userData?.amounts?.map((amount) => ({
+                userData.amounts?.map((amount) => ({
                   label: `${amount.name} : `,
                   label2: `${amount.total}/${amount.finished}`,
                 })) || []
@@ -137,31 +155,31 @@ const Profile: React.FC = () => {
                   },
                   {
                     label: "العمر : ",
-                    label2: `${userData?.age}`,
+                    label2: `${userData.age}`,
                   },
                   {
                     label: "الجنس : ",
-                    label2: userData?.gender,
+                    label2: userData.gender,
                   },
                   {
                     label: "المرحلة الدراسية : ",
-                    label2: userData?.eduLevel || "غير متوفر",
+                    label2: userData.eduLevel || "غير متوفر",
                   },
                   {
                     label: "الدولة : ",
-                    label2: userData?.country || "غير متوفر",
+                    label2: userData.country || "غير متوفر",
                   },
                   {
                     label: "اللغة : ",
-                    label2: userData?.language || "غير متوفر",
+                    label2: userData.language || "غير متوفر",
                   },
                   {
                     label: "رقم الهاتف : ",
-                    label2: userData?.phone || "غير متوفر",
+                    label2: userData.phone || "غير متوفر",
                   },
                   {
                     label: "البريد الإلكتروني : ",
-                    label2: userData?.email || "غير متوفر",
+                    label2: userData.email || "غير متوفر",
                   },
                 ] || []
               }

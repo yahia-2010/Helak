@@ -33,7 +33,9 @@ const List: React.FC<ListPropsInterface> = ({
             <ListItem
               key={index}
               {...item}
-              className={`${itemClassName} ${items.length === 1 && "rounded"}`}
+              className={`${itemClassName} ${
+                items.length === 1 ? "rounded" : ""
+              }`}
               lightBg={itemBg?.light}
               darkBg={itemBg?.dark}
             />

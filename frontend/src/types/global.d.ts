@@ -1,11 +1,10 @@
-export {};
+import { ButtonVariant } from "@/components/Button/Button";
 
 declare global {
   // Types
   type Gender = "male" | "female";
   type DataErrorsType = { name: string; error: string }[];
   type Theme = "light" | "dark";
-  type ButtonVariant = "primary" | "secondary" | "text";
 
   // Interfaces
   interface FormFieldInterface {
@@ -25,6 +24,9 @@ declare global {
     name: string;
     description?: string;
     image?: string;
+    supervisors: number[];
+    sheikhs: number[];
+    students: number[];
     free: boolean;
     online: boolean;
   }
@@ -36,19 +38,20 @@ declare global {
   }
 
   interface UserInterface {
-    name?: { fName?: string; lName?: string };
-    age?: number;
-    gender?: Gender;
+    id: number;
+    name: { fName: string; lName: string };
+    age: number;
+    gender: Gender;
     eduLevel?: string;
-    language?: string;
+    language: string;
     country?: string;
     email?: string;
     phone?: string;
     photo?: string;
-    password?: string;
-    helak?: HalakaInterface[];
-    amounts?: { name: string; finished: number; left: number; total: number }[];
-    memorized?: {
+    password: string;
+    helak: number[];
+    amounts: { name: string; finished: number; left: number; total: number }[];
+    memorized: {
       amounts: {
         name: string;
         finished: number;

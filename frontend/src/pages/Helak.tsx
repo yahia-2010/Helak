@@ -3,7 +3,7 @@ import Card from "@/components/ui/Card";
 import DropdownMenu from "@/components/DropdownMenu";
 import Input from "@/components/forms/Input";
 import filters from "@/features/Helak/data/filters";
-import fetchHelak from "@/services/fetchHelak";
+import fetchHelak from "@/services/helak/fetchHelak";
 import useErrorModal from "@/hooks/useErrorModal";
 import useSearch from "@/hooks/useSearch";
 

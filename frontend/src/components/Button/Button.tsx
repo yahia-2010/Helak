@@ -1,5 +1,7 @@
 import React from "react";
 
+export type ButtonVariant = "primary" | "secondary" | "text";
+
 export interface ButtonProps {
   children: React.ReactNode;
   variant?: ButtonVariant;

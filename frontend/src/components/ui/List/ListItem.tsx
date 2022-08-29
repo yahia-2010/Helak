@@ -1,3 +1,4 @@
+import A from "@/components/A";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -28,10 +29,12 @@ const ListItem: React.FC<ListItemPropsInterface> = ({
 }) => {
   const navigate = useNavigate();
 
+  console.log("image", image);
+
   return (
     <button
       onClick={() => url && navigate(url)}
-      className={`${className} ${!url && "cursor-default"} ${
+      className={`${className} ${!url ? "cursor-default" : ""} ${
         lightBg.default === "white" ? "bg-white" : "bg-gray-100"
       } ${
         darkBg.default === "primary"
@@ -41,13 +44,26 @@ const ListItem: React.FC<ListItemPropsInterface> = ({
         darkBg.hover === "primary"
           ? "dark:hover:bg-dark-primary"
           : "dark:hover:bg-dark-secondary"
-      } flex h-12 w-full items-center overflow-hidden p-3 transition first-of-type:rounded-t last-of-type:rounded-b`}
+      } relative flex h-12 w-full items-center overflow-hidden p-3 transition first-of-type:rounded-t last-of-type:rounded-b`}
     >
       {image && (
-        <img src={image} alt={label} className="ml-4 aspect-square h-full" />
+        <div
+          className="absolute top-0 right-0 aspect-square h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${image})`,
+          }}
+        />
       )}
-      <div className="flex w-full items-center justify-between sm:w-1/2">
-        <span className="whitespace-nowrap">{label}</span>
+      <div
+        className={`flex w-full items-center justify-between sm:w-1/2 ${
+          image ? "mr-12" : ""
+        }`}
+      >
+        {url ? (
+          <A href={url}>{label}</A>
+        ) : (
+          <span className="whitespace-nowrap">{label}</span>
+        )}
         {label2 && <span className="whitespace-nowrap">{label2}</span>}
       </div>
     </button>
