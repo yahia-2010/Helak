@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
                   key={index}
                   href={`${link.url}${
                     authValues.data?.helak && link.url === "/halaka"
-                      ? `?id=${authValues.data?.helak[0]?.id}`
+                      ? `?id=${authValues.data?.helak[0]}`
                       : ""
                   }`}
                   navLink

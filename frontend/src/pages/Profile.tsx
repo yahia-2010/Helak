@@ -8,6 +8,7 @@ import { ChartData } from "chart.js";
 import randomColorGenerator from "@/utils/util-functions/randomColorGenerator";
 import fetchHalakaById from "@/services/helak/fetchHalakaById";
 import useErrorModal from "@/hooks/useErrorModal";
+import nameJoiner from "@/utils/util-functions/nameJoiner";
 
 const Profile: React.FC = () => {
   const { authValues } = useContext(AuthContext);
@@ -48,11 +49,7 @@ const Profile: React.FC = () => {
       : [],
   });
 
-  const name = userData.name?.fName
-    ? `${userData.name?.fName}${
-        userData.name?.lName ? ` ${userData.name?.lName}` : ""
-      }`
-    : "";
+  const name = nameJoiner(userData.name);
 
   useEffect(() => {
     setHelak(() => {
@@ -60,9 +57,9 @@ const Profile: React.FC = () => {
         ?.map((id) => {
           const { res, err } = fetchHalakaById(id);
           setError(err);
-          return res as HalakaInterface;
+          return res;
         })
-        .filter((halaka) => halaka);
+        .filter((halaka) => halaka) as HalakaInterface[];
     });
   }, []);
 

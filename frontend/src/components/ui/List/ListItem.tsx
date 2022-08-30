@@ -29,8 +29,6 @@ const ListItem: React.FC<ListItemPropsInterface> = ({
 }) => {
   const navigate = useNavigate();
 
-  console.log("image", image);
-
   return (
     <button
       onClick={() => url && navigate(url)}

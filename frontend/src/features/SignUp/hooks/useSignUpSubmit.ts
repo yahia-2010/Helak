@@ -34,7 +34,6 @@ const useSignUpSubmit = (fields: FormFieldInterface[]) => {
       const { res, err } = submitSignUp(fields, setAuthValues);
       setReqError(err);
       setResponse(res);
-      console.log("submit", fields);
     }
   };
 
