@@ -47,6 +47,12 @@ Placeholder.args = {
   placeholder: "please enter text...",
 };
 
+export const Required = Template.bind({});
+Required.args = {
+  label: "required input",
+  required: true,
+};
+
 export const Error = Template.bind({});
 Error.args = {
   label: "error input",

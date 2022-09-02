@@ -2,14 +2,14 @@ import React from "react";
 
 export type ButtonVariant = "primary" | "secondary" | "text";
 
-export interface ButtonProps {
+export interface ButtonPropsInterface {
   children: React.ReactNode;
   variant?: ButtonVariant;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   [x: string]: any;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonPropsInterface> = ({
   children,
   onClick,
   variant = "primary",
