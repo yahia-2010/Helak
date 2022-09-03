@@ -100,7 +100,13 @@ const Halaka: React.FC = () => {
           </div>
           <div>
             <h2 className="text-4xl">معلومات الحلقة</h2>
-            <List {...defaultListProps} items={[]} />
+            <List
+              {...defaultListProps}
+              items={[
+                { label: "مجانية", label2: halaka?.free ? "نعم" : "لا" },
+                { label: "حضورية", label2: !halaka?.online ? "نعم" : "لا" },
+              ]}
+            />
           </div>
         </div>
       </div>
