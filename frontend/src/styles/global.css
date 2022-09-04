@@ -54,7 +54,7 @@ input:not(.no-ring) {
 }
 
 .shadow-hover {
-  @apply shadow-md transition-shadow hover:shadow-lg active:shadow-md disabled:shadow-none;
+  @apply transition-shadow-md shadow-md hover:shadow-lg active:shadow-md disabled:shadow-none;
 }
 
 .icon-button {

@@ -19,6 +19,32 @@ declare global {
     options?: string[];
   }
 
+  interface HalakaEventInterface {
+    name: string;
+    startDate: string;
+    endDate: string;
+    payed: boolean;
+    payment: number;
+  }
+
+  interface HalakaPaymentInterface {
+    name: string;
+    amount: number;
+    startDate: string;
+    endDate: string;
+    methods: string;
+    with: "sar" | "usd";
+  }
+
+  interface HalakaTripInterface {
+    name?: string;
+    to: string;
+    date: string;
+    time: string;
+    payed: boolean;
+    payment: number;
+  }
+
   interface HalakaInterface {
     id: number;
     name: string;
@@ -27,6 +53,9 @@ declare global {
     supervisors: number[];
     sheikhs: number[];
     students: number[];
+    events?: HalakaEventInterface[];
+    payments?: HalakaPaymentInterface[];
+    trips?: HalakaTripInterface[];
     free: boolean;
     online: boolean;
   }

@@ -4,12 +4,16 @@ import fetchHalakaById from "@/services/helak/fetchHalakaById";
 import HalakaDefaultPictureTemp from "@/assets/temp/halaka-default-picture-temp.svg";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import List from "@/components/ui/List";
+import { Tab } from "@headlessui/react";
 import fetchUserById from "@/services/users/fetchUserById";
 import usersToListItems from "@/utils/util-functions/usersToListItems";
 import useAutoIdFetcher from "@/hooks/useAutoIdFetcher";
+import Card from "@/components/ui/Card";
+import normalizeString from "@/utils/util-functions/normalizeString";
+import Button from "@/components/Button";
 
 const Halaka: React.FC = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [halakaId] = useState(
     searchParams.get("id")
       ? parseInt(searchParams.get("id") as string)
@@ -86,6 +90,66 @@ const Halaka: React.FC = () => {
           )}
         </div>
         <div className="flex w-full flex-col gap-y-16 sm:gap-y-20">
+          <div>
+            <h2 className="text-4xl">الأحداث و الإعلانات</h2>
+            <div className="mt-5">
+              <Tab.Group>
+                <Tab.List className="flex w-fit gap-x-1 rounded bg-white p-1.5 shadow-md dark:bg-dark-primary">
+                  <Tab
+                    className={({ selected }) =>
+                      `w-24 rounded px-5 py-2.5 transition hover:bg-gray-100 dark:hover:bg-dark-secondary ${
+                        selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
+                      }`
+                    }
+                  >
+                    الإعلانات
+                  </Tab>
+                  <Tab
+                    className={({ selected }) =>
+                      `w-24 rounded px-5 py-2.5 transition hover:bg-gray-100 dark:hover:bg-dark-secondary ${
+                        selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
+                      }`
+                    }
+                  >
+                    الرحلات
+                  </Tab>
+                  <Tab
+                    className={({ selected }) =>
+                      `w-24 rounded px-5 py-2.5 transition hover:bg-gray-100 dark:hover:bg-dark-secondary ${
+                        selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
+                      }`
+                    }
+                  >
+                    الدفع
+                  </Tab>
+                </Tab.List>
+                <Tab.Panels>
+                  <Tab.Panel>
+                    {halaka?.events?.map((event, index) => {
+                      return (
+                        <div key={index} className="">
+                          <h3 className="">{event.name}</h3>
+                          <div className="">
+                            <div className="">
+                              <span>يبدأ : </span>
+                              <span className="">{event.startDate}</span>
+                            </div>
+                            <div className="">
+                              <span>ينتهي : </span>
+                              <span className="">{event.endDate}</span>
+                            </div>
+                          </div>
+                          <Button variant="secondary">اشترك</Button>
+                        </div>
+                      );
+                    })}
+                  </Tab.Panel>
+                  <Tab.Panel></Tab.Panel>
+                  <Tab.Panel></Tab.Panel>
+                </Tab.Panels>
+              </Tab.Group>
+            </div>
+          </div>
           <div>
             <h2 className="text-4xl">المشرفين</h2>
             <List {...defaultListProps} items={usersToListItems(supervisors)} />
