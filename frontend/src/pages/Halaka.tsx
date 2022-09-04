@@ -4,7 +4,7 @@ import fetchHalakaById from "@/services/helak/fetchHalakaById";
 import HalakaDefaultPictureTemp from "@/assets/temp/halaka-default-picture-temp.svg";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import List from "@/components/ui/List";
-import { Tab } from "@headlessui/react";
+import { Tab, Transition } from "@headlessui/react";
 import fetchUserById from "@/services/users/fetchUserById";
 import usersToListItems from "@/utils/util-functions/usersToListItems";
 import useAutoIdFetcher from "@/hooks/useAutoIdFetcher";
@@ -24,6 +24,7 @@ const Halaka: React.FC = () => {
   const [supervisors, setSupervisors] = useState<UserInterface[]>([]);
   const [sheikhs, setSheikhs] = useState<UserInterface[]>([]);
   const [students, setStudents] = useState<UserInterface[]>([]);
+  const [selectedTab, setSelectedTab] = useState(0);
   const ErrorModal = useErrorModal(error);
   const location = useLocation();
   const navigate = useNavigate();
@@ -92,12 +93,12 @@ const Halaka: React.FC = () => {
         <div className="flex w-full flex-col gap-y-16 sm:gap-y-20">
           <div>
             <h2 className="text-4xl">الأحداث و الإعلانات</h2>
-            <div className="mt-5">
-              <Tab.Group>
-                <Tab.List className="flex w-fit gap-x-1 rounded bg-white p-1.5 shadow-md dark:bg-dark-primary">
+            <div className="thin-scroll mt-5 overflow-x-scroll xs:overflow-auto">
+              <Tab.Group selectedIndex={selectedTab} onChange={setSelectedTab}>
+                <Tab.List className="flex w-full gap-x-1 rounded bg-white p-1.5 dark:bg-dark-primary xs:w-72">
                   <Tab
                     className={({ selected }) =>
-                      `w-24 rounded px-5 py-2.5 transition hover:bg-gray-100 dark:hover:bg-dark-secondary ${
+                      `w-full rounded py-2.5 text-sm transition hover:bg-gray-100 dark:hover:bg-dark-secondary xs:text-base ${
                         selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
                       }`
                     }
@@ -106,7 +107,7 @@ const Halaka: React.FC = () => {
                   </Tab>
                   <Tab
                     className={({ selected }) =>
-                      `w-24 rounded px-5 py-2.5 transition hover:bg-gray-100 dark:hover:bg-dark-secondary ${
+                      `w-full rounded py-2.5 text-sm transition hover:bg-gray-100 dark:hover:bg-dark-secondary xs:text-base ${
                         selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
                       }`
                     }
@@ -115,7 +116,7 @@ const Halaka: React.FC = () => {
                   </Tab>
                   <Tab
                     className={({ selected }) =>
-                      `w-24 rounded px-5 py-2.5 transition hover:bg-gray-100 dark:hover:bg-dark-secondary ${
+                      `w-full rounded py-2.5 text-sm transition hover:bg-gray-100 dark:hover:bg-dark-secondary xs:text-base ${
                         selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
                       }`
                     }
@@ -123,27 +124,38 @@ const Halaka: React.FC = () => {
                     الدفع
                   </Tab>
                 </Tab.List>
-                <Tab.Panels>
-                  <Tab.Panel>
-                    {halaka?.events?.map((event, index) => {
-                      return (
-                        <div key={index} className="">
-                          <h3 className="">{event.name}</h3>
-                          <div className="">
+                <Tab.Panels className="mt-4 min-h-[10rem] w-full rounded bg-white dark:bg-dark-primary">
+                  <Transition
+                    as={React.Fragment}
+                    show={selectedTab === 0}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <Tab.Panel>
+                      {halaka?.events?.map((event, index) => {
+                        return (
+                          <div key={index} className="">
+                            <h3 className="">{event.name}</h3>
                             <div className="">
-                              <span>يبدأ : </span>
-                              <span className="">{event.startDate}</span>
+                              <div className="">
+                                <span>يبدأ : </span>
+                                <span className="">{event.startDate}</span>
+                              </div>
+                              <div className="">
+                                <span>ينتهي : </span>
+                                <span className="">{event.endDate}</span>
+                              </div>
                             </div>
-                            <div className="">
-                              <span>ينتهي : </span>
-                              <span className="">{event.endDate}</span>
-                            </div>
+                            <Button variant="secondary">اشترك</Button>
                           </div>
-                          <Button variant="secondary">اشترك</Button>
-                        </div>
-                      );
-                    })}
-                  </Tab.Panel>
+                        );
+                      })}
+                    </Tab.Panel>
+                  </Transition>
                   <Tab.Panel></Tab.Panel>
                   <Tab.Panel></Tab.Panel>
                 </Tab.Panels>
