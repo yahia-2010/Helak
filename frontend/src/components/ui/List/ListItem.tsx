@@ -11,11 +11,6 @@ export interface ListItemInterface {
 
 interface ListItemPropsInterface extends ListItemInterface {
   className?: string;
-  lightBg?: { default?: "white" | "gray"; hover?: "white" | "gray" };
-  darkBg?: {
-    default?: "primary" | "secondary";
-    hover?: "primary" | "secondary";
-  };
 }
 
 const ListItem: React.FC<ListItemPropsInterface> = ({
@@ -24,24 +19,17 @@ const ListItem: React.FC<ListItemPropsInterface> = ({
   image,
   url,
   className,
-  lightBg = { default: "white", hover: "gray" },
-  darkBg = { default: "secondary", hover: "primary" },
 }) => {
   const navigate = useNavigate();
 
   return (
     <button
       onClick={() => url && navigate(url)}
-      className={`${className} ${!url ? "cursor-default" : ""} ${
-        lightBg.default === "white" ? "bg-white" : "bg-gray-100"
+      className={`${
+        className ||
+        "bg-white hover:bg-gray-100 dark:bg-dark-secondary dark:hover:bg-dark-primary"
       } ${
-        darkBg.default === "primary"
-          ? "dark:bg-dark-primary"
-          : "dark:bg-dark-secondary"
-      } ${lightBg.hover === "white" ? "hover:bg-white" : "hover:bg-gray-100"} ${
-        darkBg.hover === "primary"
-          ? "dark:hover:bg-dark-primary"
-          : "dark:hover:bg-dark-secondary"
+        !url ? "cursor-default" : ""
       } relative flex h-12 w-full items-center overflow-hidden p-3 transition first-of-type:rounded-t last-of-type:rounded-b`}
     >
       {image && (

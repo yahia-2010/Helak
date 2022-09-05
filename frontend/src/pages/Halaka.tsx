@@ -11,6 +11,7 @@ import useAutoIdFetcher from "@/hooks/useAutoIdFetcher";
 import Card from "@/components/ui/Card";
 import normalizeString from "@/utils/util-functions/normalizeString";
 import Button from "@/components/Button";
+import Tabs from "@/components/ui/Tabs";
 
 const Halaka: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,24 +53,9 @@ const Halaka: React.FC = () => {
     }
   }, []);
 
-  const defaultListProps: {
-    className: string;
-    itemBg: {
-      dark: {
-        default: "primary" | "secondary";
-        hover: "primary" | "secondary";
-      };
-      light: {
-        default: "white" | "gray";
-        hover: "white" | "gray";
-      };
-    };
-  } = {
+  const defaultListProps = {
     className: "py-4",
-    itemBg: {
-      dark: { default: "primary", hover: "primary" },
-      light: { default: "white", hover: "white" },
-    },
+    itemClassName: "bg-white dark:bg-dark-primary",
   };
 
   return (
@@ -94,72 +80,36 @@ const Halaka: React.FC = () => {
           <div>
             <h2 className="text-4xl">الأحداث و الإعلانات</h2>
             <div className="thin-scroll mt-5 overflow-x-scroll xs:overflow-auto">
-              <Tab.Group selectedIndex={selectedTab} onChange={setSelectedTab}>
-                <Tab.List className="flex w-full gap-x-1 rounded bg-white p-1.5 dark:bg-dark-primary xs:w-72">
-                  <Tab
-                    className={({ selected }) =>
-                      `w-full rounded py-2.5 text-sm transition hover:bg-gray-100 dark:hover:bg-dark-secondary xs:text-base ${
-                        selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
-                      }`
-                    }
-                  >
-                    الإعلانات
-                  </Tab>
-                  <Tab
-                    className={({ selected }) =>
-                      `w-full rounded py-2.5 text-sm transition hover:bg-gray-100 dark:hover:bg-dark-secondary xs:text-base ${
-                        selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
-                      }`
-                    }
-                  >
-                    الرحلات
-                  </Tab>
-                  <Tab
-                    className={({ selected }) =>
-                      `w-full rounded py-2.5 text-sm transition hover:bg-gray-100 dark:hover:bg-dark-secondary xs:text-base ${
-                        selected ? "bg-gray-100 dark:bg-dark-secondary" : ""
-                      }`
-                    }
-                  >
-                    الدفع
-                  </Tab>
-                </Tab.List>
-                <Tab.Panels className="mt-4 min-h-[10rem] w-full rounded bg-white dark:bg-dark-primary">
-                  <Transition
-                    as={React.Fragment}
-                    show={selectedTab === 0}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                  >
-                    <Tab.Panel>
-                      {halaka?.events?.map((event, index) => {
-                        return (
-                          <div key={index} className="">
-                            <h3 className="">{event.name}</h3>
+              <Tabs
+                tabListClassName="bg-white dark:bg-dark-primary"
+                tabClassName="hover:bg-gray-100 dark:hover:bg-dark-secondary"
+                panelClassName="bg-white dark:bg-dark-primary"
+                tabs={["الأحداث", "الإعلانات", "المدفوعات"]}
+                panels={[
+                  <div key={0}>
+                    {halaka?.events?.map((event, index) => {
+                      return (
+                        <div key={index} className="">
+                          <h3 className="">{event.name}</h3>
+                          <div className="">
                             <div className="">
-                              <div className="">
-                                <span>يبدأ : </span>
-                                <span className="">{event.startDate}</span>
-                              </div>
-                              <div className="">
-                                <span>ينتهي : </span>
-                                <span className="">{event.endDate}</span>
-                              </div>
+                              <span>يبدأ : </span>
+                              <span className="">{event.startDate}</span>
                             </div>
-                            <Button variant="secondary">اشترك</Button>
+                            <div className="">
+                              <span>ينتهي : </span>
+                              <span className="">{event.endDate}</span>
+                            </div>
                           </div>
-                        );
-                      })}
-                    </Tab.Panel>
-                  </Transition>
-                  <Tab.Panel></Tab.Panel>
-                  <Tab.Panel></Tab.Panel>
-                </Tab.Panels>
-              </Tab.Group>
+                          <Button variant="secondary">اشترك</Button>
+                        </div>
+                      );
+                    })}
+                  </div>,
+                  <div key={1}></div>,
+                  <div key={2}></div>,
+                ]}
+              />
             </div>
           </div>
           <div>

@@ -6,13 +6,6 @@ export interface ListPropsInterface {
   label?: string;
   className?: string;
   itemClassName?: string;
-  itemBg?: {
-    light?: { default?: "white" | "gray"; hover?: "white" | "gray" };
-    dark?: {
-      default?: "primary" | "secondary";
-      hover?: "primary" | "secondary";
-    };
-  };
 }
 
 const List: React.FC<ListPropsInterface> = ({
@@ -20,7 +13,6 @@ const List: React.FC<ListPropsInterface> = ({
   label,
   className,
   itemClassName,
-  itemBg,
 }) => {
   return (
     <div className={`${className}`}>
@@ -36,8 +28,6 @@ const List: React.FC<ListPropsInterface> = ({
               className={`${itemClassName} ${
                 items.length === 1 ? "rounded" : ""
               }`}
-              lightBg={itemBg?.light}
-              darkBg={itemBg?.dark}
             />
             <div className="h-divider last:hidden" />
           </>

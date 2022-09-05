@@ -63,24 +63,9 @@ const Profile: React.FC = () => {
     });
   }, []);
 
-  const defaultListProps: {
-    className: string;
-    itemBg: {
-      dark: {
-        default: "primary" | "secondary";
-        hover: "primary" | "secondary";
-      };
-      light: {
-        default: "white" | "gray";
-        hover: "white" | "gray";
-      };
-    };
-  } = {
+  const defaultListProps = {
     className: "py-4",
-    itemBg: {
-      dark: { default: "primary", hover: "primary" },
-      light: { default: "white", hover: "white" },
-    },
+    itemClassName: "bg-white dark:bg-dark-primary",
   };
 
   return (

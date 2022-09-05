@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",
-    "@headlessui/react": "^1.6.6",
+    "@headlessui/react": "^0.0.0-insiders.5165be5",
     "@heroicons/react": "^1.0.6",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
